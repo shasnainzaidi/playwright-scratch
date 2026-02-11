@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { LoginPage } from '../pages/LoginPage';
+import { loginData } from '../test-data/loginData';
 
-const BASE_URL = 'https://www.olx.com.pk/'; // replace
 
 test.describe('Login Options', () => {
 
@@ -9,7 +9,7 @@ test.describe('Login Options', () => {
 
         const login = new LoginPage(page);
 
-        await login.goto(BASE_URL);
+        await login.goto('/');
         await login.clickLogin();
 
         await expect(login.googleOption).toBeVisible();
@@ -19,7 +19,7 @@ test.describe('Login Options', () => {
 
         const login = new LoginPage(page);
 
-        await login.goto(BASE_URL);
+        await login.goto('/');
         await login.clickLogin();
 
         await expect(login.phoneOption).toBeVisible();
@@ -29,7 +29,7 @@ test.describe('Login Options', () => {
 
         const login = new LoginPage(page);
 
-        await login.goto(BASE_URL);
+        await login.goto('/');
         await login.clickLogin();
 
         await expect(login.emailOption).toBeVisible();
@@ -39,10 +39,11 @@ test.describe('Login Options', () => {
 
         const login = new LoginPage(page);
 
-        await login.goto(BASE_URL);
+        await login.goto('/');
         await login.clickLogin();
 
         await expect(login.facebookOption).toBeVisible();
     });
+
 
 });
