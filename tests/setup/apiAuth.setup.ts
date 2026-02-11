@@ -13,7 +13,7 @@ setup('api authenticate', async () => {
                          },
         form: {
             grant_type: 'password',
-            client_id: 'frontend'
+            client_id: 'frontend',
             scope: 'openid',
             type: 'phone_password',
             phone_number: loginData.validUser.phone,

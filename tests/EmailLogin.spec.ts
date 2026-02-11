@@ -17,4 +17,7 @@ test('User can login with Email', async ({ page }) => {
     await expect(login.avatar).toBeVisible();
 
     await expect(login.userName).toHaveText('Everything for “U”');
+    await page.context().storageState({
+            path: 'playwright/.auth/emailAuth.json'
+            });
 });

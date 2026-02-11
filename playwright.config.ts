@@ -26,24 +26,67 @@ export default defineConfig({
     trace: 'on-first-retry',
   },
 
-  projects: [
-    {
-      name: 'email-auth',
-      testMatch: /emailAuth\.setup\.ts/,
+projects: [
+
+  // ✅ PUBLIC → run everything EXCEPT auth + setup
+  {
+    name: 'chromium-public',
+
+    testIgnore: [
+      /emailAuth\.setup\.ts/,
+      /apiAuth\.setup\.ts/,
+      /EmailLogin\.spec\.ts/
+    ],
+
+    use: {
+      browserName: 'chromium'
+    }
+  },
+
+  // ✅ EMAIL SETUP
+  {
+    name: 'email-auth',
+    testMatch: /emailAuth\.setup\.ts/
+  },
+
+  // ✅ PHONE SETUP
+  {
+    name: 'phone-auth',
+    testMatch: /apiAuth\.setup\.ts/
+  },
+
+  // ✅ EMAIL TESTS → ONLY email login test
+  {
+    name: 'chromium-email',
+
+    testMatch: /EmailLogin\.spec\.ts/,
+
+    use: {
+      browserName: 'chromium',
+      storageState: 'playwright/.auth/emailAuth.json'
     },
-    {
-      name: 'phone-auth',
-      testMatch: /apiAuth\.setup\.ts/,
+
+    dependencies: ['email-auth']
+  },
+
+  // ✅ PHONE TESTS → everything except email + setup
+  {
+    name: 'chromium-phone',
+
+    testIgnore: [
+      /emailAuth\.setup\.ts/,
+      /apiAuth\.setup\.ts/,
+      /EmailLogin\.spec\.ts/
+    ],
+
+    use: {
+      browserName: 'chromium',
+      storageState: 'playwright/.auth/phoneAuth.json'
     },
-    {
-      name: 'chromium-email',
-      use: { storageState: 'playwright/.auth/emailUI.json' },
-      dependencies: ['email-auth'],
-    },
-    {
-      name: 'chromium-phone',
-      use: { storageState: 'playwright/.auth/phoneAPI.json' },
-      dependencies: ['phone-auth'],
-    },
-  ],
+
+    dependencies: ['phone-auth']
+  }
+
+]
+
 });
