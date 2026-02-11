@@ -43,19 +43,15 @@ projects: [
     }
   },
 
-  // ✅ EMAIL SETUP
   {
     name: 'email-auth',
     testMatch: /emailAuth\.setup\.ts/
   },
 
-  // ✅ PHONE SETUP
   {
     name: 'phone-auth',
     testMatch: /apiAuth\.setup\.ts/
   },
-
-  // ✅ EMAIL TESTS → ONLY email login test
   {
     name: 'chromium-email',
 
@@ -69,7 +65,6 @@ projects: [
     dependencies: ['email-auth']
   },
 
-  // ✅ PHONE TESTS → everything except email + setup
   {
     name: 'chromium-phone',
 
@@ -86,7 +81,5 @@ projects: [
 
     dependencies: ['phone-auth']
   }
-
 ]
-
 });
