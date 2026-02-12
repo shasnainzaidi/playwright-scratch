@@ -7,6 +7,15 @@ node_modules/
 /playwright/.cache/
 /playwright/.auth/
 /.env
-/allure-results
-/.github
-/.idea
+
+# Reports
+/allure-results/
+/allure-report/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
