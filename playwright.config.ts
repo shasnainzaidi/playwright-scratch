@@ -30,7 +30,6 @@ export default defineConfig({
 
 projects: [
 
-  // ✅ PUBLIC → run everything EXCEPT auth + setup
   {
     name: 'chromium-public',
 

@@ -1,8 +1,8 @@
-🚀 Playwright TypeScript Automation Framework
+**Playwright TypeScript Automation Framework**
 
 A scalable, production-ready UI and API automation framework built using Playwright + TypeScript, designed to support:
 
-UI authentication via Email
+**UI authentication via Email
 
 API authentication via Phone
 
@@ -14,11 +14,11 @@ Storage-state based session reuse
 
 CI-ready configuration
 
-Allure & HTML reporting
+Allure & HTML reporting**
 
 This framework follows modern automation architecture practices focused on speed, stability, and maintainability.
 
-📌 Tech Stack
+**Tech Stack**
 Tool	Purpose
 Playwright	End-to-end test automation
 TypeScript	Type safety & maintainability
