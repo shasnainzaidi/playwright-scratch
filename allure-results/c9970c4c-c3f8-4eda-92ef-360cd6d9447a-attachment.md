@@ -1,0 +1,948 @@
+# Page snapshot
+
+```yaml
+- generic [ref=e3]:
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - generic [ref=e7]:
+        - link [ref=e8] [cursor=pointer]:
+          - /url: /
+          - img [ref=e9]
+        - link "OLX Motors Motors" [ref=e11] [cursor=pointer]:
+          - /url: https://www.olx.com.pk/motors/
+          - generic [ref=e12]:
+            - img "OLX Motors" [ref=e13]
+            - generic [ref=e14]: Motors
+        - link "OLX Property Property" [ref=e15] [cursor=pointer]:
+          - /url: https://www.olx.com.pk/properties/
+          - generic [ref=e16]:
+            - img "OLX Property" [ref=e17]
+            - generic [ref=e18]: Property
+      - generic [ref=e19]:
+        - button "Login" [ref=e21] [cursor=pointer]
+        - button "Button border Plus icon Sell" [ref=e23] [cursor=pointer]:
+          - img "Button border" [ref=e24]
+          - generic [ref=e25]:
+            - img "Plus icon" [ref=e26]
+            - generic [ref=e27]: Sell
+    - generic [ref=e28]:
+      - generic "Location input" [ref=e30]:
+        - generic [ref=e33]:
+          - img "Current location icon" [ref=e35]
+          - textbox "Location" [ref=e36]: Pakistan
+          - img [ref=e38] [cursor=pointer]
+      - generic "Search input" [ref=e42]:
+        - searchbox "Find Cars, Mobile Phones and more..." [ref=e45]
+        - button "Search" [ref=e46] [cursor=pointer]:
+          - img [ref=e47]
+          - generic [ref=e49]: Search
+  - generic [ref=e50]:
+    - generic [ref=e52]:
+      - generic [ref=e54] [cursor=pointer]:
+        - text: All categories
+        - img "Dropdown arrow" [ref=e55]
+      - link "Mobile Phones" [ref=e57] [cursor=pointer]:
+        - /url: /mobile-phones_c1453
+      - link "Cars" [ref=e59] [cursor=pointer]:
+        - /url: /cars_c84
+      - link "Motorcycles" [ref=e61] [cursor=pointer]:
+        - /url: /motorcycles_c81
+      - link "Houses" [ref=e63] [cursor=pointer]:
+        - /url: /houses_c1721
+      - link "Video-Audios" [ref=e65] [cursor=pointer]:
+        - /url: /tv-video-audio_c729
+      - link "Tablets" [ref=e67] [cursor=pointer]:
+        - /url: /tablets_c1455
+      - link "Land & Plots" [ref=e69] [cursor=pointer]:
+        - /url: /land-plots_c40
+    - link "16th Match LIVE 225/5 (20.0) VS 22/2 (4.0) Oman needs 204 runs in 96 balls *sponsored by Mashreq" [ref=e71] [cursor=pointer]:
+      - /url: https://mashreq.com/dispkbcamp
+      - img [ref=e72]
+      - generic [ref=e73]:
+        - generic [ref=e74]:
+          - text: 16th Match
+          - generic [ref=e77]: LIVE
+        - generic [ref=e78]:
+          - generic [ref=e79]:
+            - img [ref=e81]
+            - generic [ref=e100]:
+              - generic [ref=e102]: 225/5
+              - generic [ref=e103]: (20.0)
+          - generic [ref=e105]: VS
+          - generic [ref=e106]:
+            - img [ref=e108]
+            - generic [ref=e209]:
+              - generic [ref=e211]: 22/2
+              - generic [ref=e213]: (4.0)
+        - generic [ref=e214]: Oman needs 204 runs in 96 balls
+      - generic [ref=e215]:
+        - generic [ref=e217]: "*sponsored by"
+        - img "Mashreq" [ref=e218]
+    - generic [ref=e223]:
+      - link "Mobiles Mobiles" [ref=e224] [cursor=pointer]:
+        - /url: /mobiles_c1411
+        - generic [ref=e225]:
+          - img "Mobiles" [ref=e227]
+          - generic [ref=e228]: Mobiles
+      - link "Vehicles Vehicles" [ref=e229] [cursor=pointer]:
+        - /url: /vehicles_c5
+        - generic [ref=e230]:
+          - img "Vehicles" [ref=e232]
+          - generic [ref=e233]: Vehicles
+      - link "Property for Sale Property for Sale" [ref=e234] [cursor=pointer]:
+        - /url: /property-for-sale_c2
+        - generic [ref=e235]:
+          - img "Property for Sale" [ref=e237]
+          - generic [ref=e238]: Property for Sale
+      - link "Property for Rent Property for Rent" [ref=e239] [cursor=pointer]:
+        - /url: /property-for-rent_c3
+        - generic [ref=e240]:
+          - img "Property for Rent" [ref=e242]
+          - generic [ref=e243]: Property for Rent
+      - link "Electronics & Home Appliances Electronics & Home Appliances" [ref=e244] [cursor=pointer]:
+        - /url: /electronics-home-appliances_c99
+        - generic [ref=e245]:
+          - img "Electronics & Home Appliances" [ref=e247]
+          - generic [ref=e248]: Electronics & Home Appliances
+      - link "Bikes Bikes" [ref=e249] [cursor=pointer]:
+        - /url: /bikes_c1898
+        - generic [ref=e250]:
+          - img "Bikes" [ref=e252]
+          - generic [ref=e253]: Bikes
+      - link "Business, Industrial & Agriculture Business, Industrial & Agriculture" [ref=e254] [cursor=pointer]:
+        - /url: /business-industrial-agriculture_c1981
+        - generic [ref=e255]:
+          - img "Business, Industrial & Agriculture" [ref=e257]
+          - generic [ref=e258]: Business, Industrial & Agriculture
+      - link "Services Services" [ref=e259] [cursor=pointer]:
+        - /url: /services_c619
+        - generic [ref=e260]:
+          - img "Services" [ref=e262]
+          - generic [ref=e263]: Services
+      - link "Jobs Jobs" [ref=e264] [cursor=pointer]:
+        - /url: /jobs_c4
+        - generic [ref=e265]:
+          - img "Jobs" [ref=e267]
+          - generic [ref=e268]: Jobs
+      - link "Animals Animals" [ref=e269] [cursor=pointer]:
+        - /url: /animals_c103
+        - generic [ref=e270]:
+          - img "Animals" [ref=e272]
+          - generic [ref=e273]: Animals
+      - link "Furniture & Home Decor Furniture & Home Decor" [ref=e274] [cursor=pointer]:
+        - /url: /furniture-home-decor_c628
+        - generic [ref=e275]:
+          - img "Furniture & Home Decor" [ref=e277]
+          - generic [ref=e278]: Furniture & Home Decor
+      - link "Fashion & Beauty Fashion & Beauty" [ref=e279] [cursor=pointer]:
+        - /url: /fashion-beauty_c87
+        - generic [ref=e280]:
+          - img "Fashion & Beauty" [ref=e282]
+          - generic [ref=e283]: Fashion & Beauty
+      - link "Books, Sports & Hobbies Books, Sports & Hobbies" [ref=e284] [cursor=pointer]:
+        - /url: /books-sports-hobbies_c767
+        - generic [ref=e285]:
+          - img "Books, Sports & Hobbies" [ref=e287]
+          - generic [ref=e288]: Books, Sports & Hobbies
+      - link "Kids Kids" [ref=e289] [cursor=pointer]:
+        - /url: /kids_c88
+        - generic [ref=e290]:
+          - img "Kids" [ref=e292]
+          - generic [ref=e293]: Kids
+    - generic [ref=e294]:
+      - generic "Category with hits section" [ref=e295]:
+        - generic [ref=e296]:
+          - generic "Section Title" [ref=e297]: Mobile Phones
+          - link "View more" [ref=e298] [cursor=pointer]:
+            - /url: /mobile-phones_c1453
+            - generic [ref=e300]: View more
+        - generic [ref=e301]:
+          - article [ref=e302] [cursor=pointer]:
+            - generic [ref=e303]:
+              - link "iphone 12promax 256gb pta approved":
+                - /url: /item/iphone-12promax-256gb-pta-approved-iid-1108532669
+              - img "Cover photo" [ref=e306]
+            - generic [ref=e307]:
+              - link "iphone 12promax 256gb pta approved":
+                - /url: /item/iphone-12promax-256gb-pta-approved-iid-1108532669
+              - generic [ref=e309]:
+                - link "iphone 12promax 256gb pta approved":
+                  - /url: /item/iphone-12promax-256gb-pta-approved-iid-1108532669
+                - generic "Price" [ref=e311]:
+                  - generic [ref=e312]: Rs 1.48 Lac
+                - generic "Title" [ref=e313]:
+                  - paragraph [ref=e314]: iphone 12promax 256gb pta approved
+                - img "Favorite icon" [ref=e317]
+                - generic [ref=e319]:
+                  - generic "Location" [ref=e320]: Main Boulevard Gulberg, Lahore
+                  - generic [ref=e321]: 2 weeks ago
+          - article [ref=e322] [cursor=pointer]:
+            - generic [ref=e323]:
+              - link "Iphone all models read add":
+                - /url: /item/iphone-all-models-read-add-iid-1110990771
+              - img "Cover photo" [ref=e326]
+            - generic [ref=e327]:
+              - link "Iphone all models read add":
+                - /url: /item/iphone-all-models-read-add-iid-1110990771
+              - generic [ref=e329]:
+                - link "Iphone all models read add":
+                  - /url: /item/iphone-all-models-read-add-iid-1110990771
+                - generic "Price" [ref=e331]:
+                  - generic [ref=e332]: Rs 6,000
+                - generic "Title" [ref=e333]:
+                  - paragraph [ref=e334]: Iphone all models read add
+                - img "Favorite icon" [ref=e337]
+                - generic [ref=e339]:
+                  - generic "Location" [ref=e340]: Peer Colony, Lahore
+                  - generic [ref=e341]: 1 week ago
+          - article [ref=e342] [cursor=pointer]:
+            - generic [ref=e343]:
+              - link "Vivo Y19 | 6GB Ram | 128GB Storage | Dual Sim |PTA Approved | vivo Y19":
+                - /url: /item/vivo-y19-6gb-ram-128gb-storage-dual-sim-pta-approved-vivo-y19-iid-1100140990
+              - img "Cover photo" [ref=e346]
+            - generic [ref=e347]:
+              - link "Vivo Y19 | 6GB Ram | 128GB Storage | Dual Sim |PTA Approved | vivo Y19":
+                - /url: /item/vivo-y19-6gb-ram-128gb-storage-dual-sim-pta-approved-vivo-y19-iid-1100140990
+              - generic [ref=e349]:
+                - link "Vivo Y19 | 6GB Ram | 128GB Storage | Dual Sim |PTA Approved | vivo Y19":
+                  - /url: /item/vivo-y19-6gb-ram-128gb-storage-dual-sim-pta-approved-vivo-y19-iid-1100140990
+                - generic "Price" [ref=e351]:
+                  - generic [ref=e352]: Rs 15,500
+                - generic "Title" [ref=e353]:
+                  - paragraph [ref=e354]: Vivo Y19 | 6GB Ram | 128GB Storage | Dual Sim |PTA Approved | vivo Y19
+                - img "Favorite icon" [ref=e357]
+                - generic [ref=e359]:
+                  - generic "Location" [ref=e360]: North Karachi - Sector 11L, Karachi
+                  - generic [ref=e361]: 4 weeks ago
+          - article [ref=e362] [cursor=pointer]:
+            - generic [ref=e363]:
+              - link "iPhone 16 Pro Max 256gb Factory unlock":
+                - /url: /item/iphone-16-pro-max-256gb-factory-unlock-iid-1111231188
+              - img "Cover photo" [ref=e366]
+            - generic [ref=e367]:
+              - link "iPhone 16 Pro Max 256gb Factory unlock":
+                - /url: /item/iphone-16-pro-max-256gb-factory-unlock-iid-1111231188
+              - generic [ref=e369]:
+                - link "iPhone 16 Pro Max 256gb Factory unlock":
+                  - /url: /item/iphone-16-pro-max-256gb-factory-unlock-iid-1111231188
+                - generic "Price" [ref=e371]:
+                  - generic [ref=e372]: Rs 2.49 Lac
+                - generic "Title" [ref=e373]:
+                  - paragraph [ref=e374]: iPhone 16 Pro Max 256gb Factory unlock
+                - img "Favorite icon" [ref=e377]
+                - generic [ref=e379]:
+                  - generic "Location" [ref=e380]: Ghaziwal Colony, Narowal
+                  - generic [ref=e381]: 2 days ago
+      - generic "Category with hits section" [ref=e382]:
+        - generic [ref=e383]:
+          - generic "Section Title" [ref=e384]: Cars
+          - link "View more" [ref=e385] [cursor=pointer]:
+            - /url: /cars_c84
+            - generic [ref=e387]: View more
+        - generic [ref=e388]:
+          - article [ref=e389] [cursor=pointer]:
+            - generic [ref=e390]:
+              - link "Toyota RAIZE Z premium":
+                - /url: /item/toyota-raize-z-premium-iid-1110395026
+            - generic [ref=e393]:
+              - link "Toyota RAIZE Z premium":
+                - /url: /item/toyota-raize-z-premium-iid-1110395026
+              - generic [ref=e395]:
+                - link "Toyota RAIZE Z premium":
+                  - /url: /item/toyota-raize-z-premium-iid-1110395026
+                - generic "Price" [ref=e397]:
+                  - generic [ref=e398]: Rs 55.50 Lacs
+                - generic "Title" [ref=e399]:
+                  - paragraph [ref=e400]: Toyota RAIZE Z premium
+                - img "Favorite icon" [ref=e403]
+                - generic "Subtitle" [ref=e405]:
+                  - generic [ref=e407]:
+                    - generic "Year" [ref=e408]:
+                      - generic [ref=e409]: "2021"
+                    - generic [ref=e410]: •
+                    - generic "Mileage" [ref=e411]:
+                      - generic [ref=e412]: 25,000 km
+                    - generic [ref=e413]: •
+                    - generic "FuelType" [ref=e414]:
+                      - generic [ref=e415]: Petrol
+                - generic [ref=e416]:
+                  - generic "Location" [ref=e417]: F-10 Markaz, Islamabad
+                  - generic [ref=e418]: 4 weeks ago
+          - article [ref=e419] [cursor=pointer]:
+            - generic [ref=e420]:
+              - link "indus corola 1994 Model Karachi number original Japani diesel":
+                - /url: /item/indus-corola-1994-model-karachi-number-original-japani-diesel-iid-1111037511
+            - generic [ref=e423]:
+              - link "indus corola 1994 Model Karachi number original Japani diesel":
+                - /url: /item/indus-corola-1994-model-karachi-number-original-japani-diesel-iid-1111037511
+              - generic [ref=e425]:
+                - link "indus corola 1994 Model Karachi number original Japani diesel":
+                  - /url: /item/indus-corola-1994-model-karachi-number-original-japani-diesel-iid-1111037511
+                - generic "Price" [ref=e427]:
+                  - generic [ref=e428]: Rs 14.80 Lacs
+                - generic "Title" [ref=e429]:
+                  - paragraph [ref=e430]: indus corola 1994 Model Karachi number original Japani diesel
+                - img "Favorite icon" [ref=e433]
+                - generic "Subtitle" [ref=e435]:
+                  - generic [ref=e437]:
+                    - generic "Year" [ref=e438]:
+                      - generic [ref=e439]: "1994"
+                    - generic [ref=e440]: •
+                    - generic "Mileage" [ref=e441]:
+                      - generic [ref=e442]: 223,000 km
+                    - generic [ref=e443]: •
+                    - generic "FuelType" [ref=e444]:
+                      - generic [ref=e445]: Diesel
+                - generic [ref=e446]:
+                  - generic "Location" [ref=e447]: Spinny Road, Quetta
+                  - generic [ref=e448]: 16 hours ago
+          - article [ref=e449] [cursor=pointer]:
+            - generic [ref=e450]:
+              - link "Hyundai Santa Fe Smart 2026":
+                - /url: /item/hyundai-santa-fe-smart-2026-iid-1110693047
+            - generic [ref=e453]:
+              - link "Hyundai Santa Fe Smart 2026":
+                - /url: /item/hyundai-santa-fe-smart-2026-iid-1110693047
+              - generic [ref=e455]:
+                - link "Hyundai Santa Fe Smart 2026":
+                  - /url: /item/hyundai-santa-fe-smart-2026-iid-1110693047
+                - generic "Price" [ref=e457]:
+                  - generic [ref=e458]: Rs 1.36 Crore
+                - generic "Title" [ref=e459]:
+                  - paragraph [ref=e460]: Hyundai Santa Fe Smart 2026
+                - img "Favorite icon" [ref=e463]
+                - generic "Subtitle" [ref=e465]:
+                  - generic [ref=e467]:
+                    - generic "Year" [ref=e468]:
+                      - generic [ref=e469]: "2025"
+                    - generic [ref=e470]: •
+                    - generic "Mileage" [ref=e471]:
+                      - generic [ref=e472]: 3,000 km
+                    - generic [ref=e473]: •
+                    - generic "FuelType" [ref=e474]:
+                      - generic [ref=e475]: Petrol
+                - generic [ref=e476]:
+                  - generic "Location" [ref=e477]: Defence Road, Lahore
+                  - generic [ref=e478]: 3 weeks ago
+          - article [ref=e479] [cursor=pointer]:
+            - generic [ref=e480]:
+              - link "Honda city 1.3 2019":
+                - /url: /item/honda-city-13-2019-iid-1110407481
+            - generic [ref=e483]:
+              - link "Honda city 1.3 2019":
+                - /url: /item/honda-city-13-2019-iid-1110407481
+              - generic [ref=e485]:
+                - link "Honda city 1.3 2019":
+                  - /url: /item/honda-city-13-2019-iid-1110407481
+                - generic "Price" [ref=e487]:
+                  - generic [ref=e488]: Rs 35.75 Lacs
+                - generic "Title" [ref=e489]:
+                  - paragraph [ref=e490]: Honda city 1.3 2019
+                - img "Favorite icon" [ref=e493]
+                - generic "Subtitle" [ref=e495]:
+                  - generic [ref=e497]:
+                    - generic "Year" [ref=e498]:
+                      - generic [ref=e499]: "2019"
+                    - generic [ref=e500]: •
+                    - generic "Mileage" [ref=e501]:
+                      - generic [ref=e502]: 78,000 km
+                    - generic [ref=e503]: •
+                    - generic "FuelType" [ref=e504]:
+                      - generic [ref=e505]: Petrol
+                - generic [ref=e506]:
+                  - generic "Location" [ref=e507]: Taj Colony, Faisalabad
+                  - generic [ref=e508]: 3 weeks ago
+      - generic "Category with hits section" [ref=e509]:
+        - generic [ref=e510]:
+          - generic "Section Title" [ref=e511]: Bikes & Motorcycles
+          - link "View more" [ref=e512] [cursor=pointer]:
+            - /url: /motorcycles_c81
+            - generic [ref=e514]: View more
+        - generic [ref=e515]:
+          - article [ref=e516] [cursor=pointer]:
+            - generic [ref=e517]:
+              - link "Yamaha Royale YB 100 1990 03045656568":
+                - /url: /item/yamaha-royale-yb-100-1990-03045656568-iid-1111240571
+            - generic [ref=e520]:
+              - link "Yamaha Royale YB 100 1990 03045656568":
+                - /url: /item/yamaha-royale-yb-100-1990-03045656568-iid-1111240571
+              - generic [ref=e522]:
+                - link "Yamaha Royale YB 100 1990 03045656568":
+                  - /url: /item/yamaha-royale-yb-100-1990-03045656568-iid-1111240571
+                - generic "Price" [ref=e524]:
+                  - generic [ref=e525]: Rs 90,000
+                - generic "Title" [ref=e526]:
+                  - paragraph [ref=e527]: Yamaha Royale YB 100 1990 03045656568
+                - img "Favorite icon" [ref=e530]
+                - generic [ref=e532]:
+                  - generic "Location" [ref=e533]: Johar Town, Lahore
+                  - generic [ref=e534]: 2 days ago
+          - article [ref=e535] [cursor=pointer]:
+            - generic [ref=e536]:
+              - link "Honda cd 70 2025 model 10/10 condition best for 2026":
+                - /url: /item/honda-cd-70-2025-model-1010-condition-best-for-2026-iid-1108619328
+            - generic [ref=e539]:
+              - link "Honda cd 70 2025 model 10/10 condition best for 2026":
+                - /url: /item/honda-cd-70-2025-model-1010-condition-best-for-2026-iid-1108619328
+              - generic [ref=e541]:
+                - link "Honda cd 70 2025 model 10/10 condition best for 2026":
+                  - /url: /item/honda-cd-70-2025-model-1010-condition-best-for-2026-iid-1108619328
+                - generic "Price" [ref=e543]:
+                  - generic [ref=e544]: Rs 1.46 Lac
+                - generic "Title" [ref=e545]:
+                  - paragraph [ref=e546]: Honda cd 70 2025 model 10/10 condition best for 2026
+                - img "Favorite icon" [ref=e549]
+                - generic [ref=e551]:
+                  - generic "Location" [ref=e552]: Saddar, Lahore
+                  - generic [ref=e553]: 2 weeks ago
+          - article [ref=e554] [cursor=pointer]:
+            - generic [ref=e555]:
+              - link "Suzuki GSX-R600 | Model 2013 | Suzuki In Bike | Total Genuine":
+                - /url: /item/suzuki-gsx-r600-model-2013-suzuki-in-bike-total-genuine-iid-1110430660
+            - generic [ref=e558]:
+              - link "Suzuki GSX-R600 | Model 2013 | Suzuki In Bike | Total Genuine":
+                - /url: /item/suzuki-gsx-r600-model-2013-suzuki-in-bike-total-genuine-iid-1110430660
+              - generic [ref=e560]:
+                - link "Suzuki GSX-R600 | Model 2013 | Suzuki In Bike | Total Genuine":
+                  - /url: /item/suzuki-gsx-r600-model-2013-suzuki-in-bike-total-genuine-iid-1110430660
+                - generic "Price" [ref=e562]:
+                  - generic [ref=e563]: Rs 34 Lacs
+                - generic "Title" [ref=e564]:
+                  - paragraph [ref=e565]: Suzuki GSX-R600 | Model 2013 | Suzuki In Bike | Total Genuine
+                - img "Favorite icon" [ref=e568]
+                - generic [ref=e570]:
+                  - generic "Location" [ref=e571]: Paragon City, Lahore
+                  - generic [ref=e572]: 2 days ago
+          - article [ref=e573] [cursor=pointer]:
+            - generic [ref=e574]:
+              - link "superstar 200R special edition":
+                - /url: /item/superstar-200r-special-edition-iid-1110701107
+            - generic [ref=e577]:
+              - link "superstar 200R special edition":
+                - /url: /item/superstar-200r-special-edition-iid-1110701107
+              - generic [ref=e579]:
+                - link "superstar 200R special edition":
+                  - /url: /item/superstar-200r-special-edition-iid-1110701107
+                - generic "Price" [ref=e581]:
+                  - generic [ref=e582]: Rs 5.15 Lac
+                - generic "Title" [ref=e583]:
+                  - paragraph [ref=e584]: superstar 200R special edition
+                - img "Favorite icon" [ref=e587]
+                - generic [ref=e589]:
+                  - generic "Location" [ref=e590]: Kanju Township Sector B, Swat
+                  - generic [ref=e591]: 2 weeks ago
+      - generic "Category with hits section" [ref=e592]:
+        - generic [ref=e593]:
+          - generic "Section Title" [ref=e594]: Houses
+          - link "View more" [ref=e595] [cursor=pointer]:
+            - /url: /houses_c1721
+            - generic [ref=e597]: View more
+        - generic [ref=e598]:
+          - article [ref=e599] [cursor=pointer]:
+            - generic [ref=e600]:
+              - link "Luxury Mumtaz City 8 Marla House For Sale":
+                - /url: /item/luxury-mumtaz-city-8-marla-house-for-sale-iid-1111060531
+            - generic [ref=e603]:
+              - link "Luxury Mumtaz City 8 Marla House For Sale":
+                - /url: /item/luxury-mumtaz-city-8-marla-house-for-sale-iid-1111060531
+              - generic [ref=e605]:
+                - link "Luxury Mumtaz City 8 Marla House For Sale":
+                  - /url: /item/luxury-mumtaz-city-8-marla-house-for-sale-iid-1111060531
+                - generic "Price" [ref=e607]:
+                  - generic [ref=e608]: Rs 2.80 Crore
+                - generic "Title" [ref=e609]:
+                  - paragraph [ref=e610]: Luxury Mumtaz City 8 Marla House For Sale
+                - img "Favorite icon" [ref=e613]
+                - generic "Subtitle" [ref=e615]:
+                  - generic [ref=e617]:
+                    - generic "Bedrooms" [ref=e618]:
+                      - generic [ref=e619]: 5 Beds
+                    - generic [ref=e620]: •
+                    - generic "Bathrooms" [ref=e621]:
+                      - generic [ref=e622]: 7 Baths
+                    - generic [ref=e623]: •
+                    - generic "Area" [ref=e624]:
+                      - generic [ref=e625]: 8 Marla
+                - generic [ref=e626]:
+                  - generic "Location" [ref=e627]: Mumtaz City, Islamabad
+                  - generic [ref=e628]: 6 hours ago
+          - article [ref=e629] [cursor=pointer]:
+            - generic [ref=e630]:
+              - link "5 Marla ( 25*50 ) Single Storey House For Sale In Gulshan Sehat E-18 Islamabad.":
+                - /url: /item/5-marla-2550-single-storey-house-for-sale-in-gulshan-sehat-e-18-islamabad-iid-1111014221
+            - generic [ref=e633]:
+              - link "5 Marla ( 25*50 ) Single Storey House For Sale In Gulshan Sehat E-18 Islamabad.":
+                - /url: /item/5-marla-2550-single-storey-house-for-sale-in-gulshan-sehat-e-18-islamabad-iid-1111014221
+              - generic [ref=e635]:
+                - link "5 Marla ( 25*50 ) Single Storey House For Sale In Gulshan Sehat E-18 Islamabad.":
+                  - /url: /item/5-marla-2550-single-storey-house-for-sale-in-gulshan-sehat-e-18-islamabad-iid-1111014221
+                - generic "Price" [ref=e637]:
+                  - generic [ref=e638]: Rs 1.10 Crore
+                - generic "Title" [ref=e639]:
+                  - paragraph [ref=e640]: 5 Marla ( 25*50 ) Single Storey House For Sale In Gulshan Sehat E-18 Islamabad.
+                - img "Favorite icon" [ref=e643]
+                - generic "Subtitle" [ref=e645]:
+                  - generic [ref=e647]:
+                    - generic "Bedrooms" [ref=e648]:
+                      - generic [ref=e649]: 2 Beds
+                    - generic [ref=e650]: •
+                    - generic "Bathrooms" [ref=e651]:
+                      - generic [ref=e652]: 3 Baths
+                    - generic [ref=e653]: •
+                    - generic "Area" [ref=e654]:
+                      - generic [ref=e655]: 5 Marla
+                - generic [ref=e656]:
+                  - generic "Location" [ref=e657]: Gulshan-e-Sehat 1, Islamabad
+                  - generic [ref=e658]: 1 week ago
+          - article [ref=e659] [cursor=pointer]:
+            - generic [ref=e660]:
+              - link "6 marla brand new double story house":
+                - /url: /item/6-marla-brand-new-double-story-house-iid-1111040878
+            - generic [ref=e663]:
+              - link "6 marla brand new double story house":
+                - /url: /item/6-marla-brand-new-double-story-house-iid-1111040878
+              - generic [ref=e665]:
+                - link "6 marla brand new double story house":
+                  - /url: /item/6-marla-brand-new-double-story-house-iid-1111040878
+                - generic "Price" [ref=e667]:
+                  - generic [ref=e668]: Rs 2.85 Crore
+                - generic "Title" [ref=e669]:
+                  - paragraph [ref=e670]: 6 marla brand new double story house
+                - img "Favorite icon" [ref=e673]
+                - generic "Subtitle" [ref=e675]:
+                  - generic [ref=e677]:
+                    - generic "Bedrooms" [ref=e678]:
+                      - generic [ref=e679]: 4 Beds
+                    - generic [ref=e680]: •
+                    - generic "Bathrooms" [ref=e681]:
+                      - generic [ref=e682]: 4 Baths
+                    - generic [ref=e683]: •
+                    - generic "Area" [ref=e684]:
+                      - generic [ref=e685]: 6 Marla
+                - generic [ref=e686]:
+                  - generic "Location" [ref=e687]: Airport Housing Society - Sector 1, Rawalpindi
+                  - generic [ref=e688]: 4 days ago
+          - article [ref=e689] [cursor=pointer]:
+            - generic [ref=e690]:
+              - link "MEMON REAL ESTATE For Property , Sale , Purchase , Rent":
+                - /url: /item/memon-real-estate-for-property-sale-purchase-rent-iid-1110337452
+            - generic [ref=e693]:
+              - link "MEMON REAL ESTATE For Property , Sale , Purchase , Rent":
+                - /url: /item/memon-real-estate-for-property-sale-purchase-rent-iid-1110337452
+              - generic [ref=e695]:
+                - link "MEMON REAL ESTATE For Property , Sale , Purchase , Rent":
+                  - /url: /item/memon-real-estate-for-property-sale-purchase-rent-iid-1110337452
+                - generic "Price" [ref=e697]:
+                  - generic [ref=e698]: Rs 1.20 Crore
+                - generic "Title" [ref=e699]:
+                  - paragraph [ref=e700]: MEMON REAL ESTATE For Property , Sale , Purchase , Rent
+                - img "Favorite icon" [ref=e703]
+                - generic "Subtitle" [ref=e705]:
+                  - generic [ref=e707]:
+                    - generic "Bedrooms" [ref=e708]:
+                      - generic [ref=e709]: 4 Beds
+                    - generic [ref=e710]: •
+                    - generic "Bathrooms" [ref=e711]:
+                      - generic [ref=e712]: 5 Baths
+                    - generic [ref=e713]: •
+                    - generic "Area" [ref=e714]:
+                      - generic [ref=e715]: 80 SQYD
+                - generic [ref=e716]:
+                  - generic "Location" [ref=e717]: Diamond City, Karachi
+                  - generic [ref=e718]: 1 week ago
+      - generic "Category with hits section" [ref=e719]:
+        - generic [ref=e720]:
+          - generic "Section Title" [ref=e721]: Video-Audios
+          - link "View more" [ref=e722] [cursor=pointer]:
+            - /url: /tv-video-audio_c729
+            - generic [ref=e724]: View more
+        - generic [ref=e725]:
+          - article [ref=e726] [cursor=pointer]:
+            - generic [ref=e727]:
+              - link "all company amplifier original new used available for sale":
+                - /url: /item/all-company-amplifier-original-new-used-available-for-sale-iid-1110783094
+            - generic [ref=e730]:
+              - link "all company amplifier original new used available for sale":
+                - /url: /item/all-company-amplifier-original-new-used-available-for-sale-iid-1110783094
+              - generic [ref=e732]:
+                - link "all company amplifier original new used available for sale":
+                  - /url: /item/all-company-amplifier-original-new-used-available-for-sale-iid-1110783094
+                - generic "Price" [ref=e734]:
+                  - generic [ref=e735]: Rs 1.20 Lac
+                - generic "Title" [ref=e736]:
+                  - paragraph [ref=e737]: all company amplifier original new used available for sale
+                - img "Favorite icon" [ref=e740]
+                - generic [ref=e742]:
+                  - generic "Location" [ref=e743]: Rawalpindi, Punjab
+                  - generic [ref=e744]: 3 days ago
+          - article [ref=e745] [cursor=pointer]:
+            - generic [ref=e746]:
+              - link "Walkie Talkie | Wireless Set Official Baofeng UV-82 Two Way Radio":
+                - /url: /item/walkie-talkie-wireless-set-official-baofeng-uv-82-two-way-radio-iid-1081327851
+            - generic [ref=e749]:
+              - link "Walkie Talkie | Wireless Set Official Baofeng UV-82 Two Way Radio":
+                - /url: /item/walkie-talkie-wireless-set-official-baofeng-uv-82-two-way-radio-iid-1081327851
+              - generic [ref=e751]:
+                - link "Walkie Talkie | Wireless Set Official Baofeng UV-82 Two Way Radio":
+                  - /url: /item/walkie-talkie-wireless-set-official-baofeng-uv-82-two-way-radio-iid-1081327851
+                - generic "Price" [ref=e753]:
+                  - generic [ref=e754]: Rs 15,300
+                - generic "Title" [ref=e755]:
+                  - paragraph [ref=e756]: Walkie Talkie | Wireless Set Official Baofeng UV-82 Two Way Radio
+                - img "Favorite icon" [ref=e759]
+                - generic [ref=e761]:
+                  - generic "Location" [ref=e762]: Saddar, Lahore
+                  - generic [ref=e763]: 2 weeks ago
+          - article [ref=e764] [cursor=pointer]:
+            - generic [ref=e765]:
+              - link "Baofeng 888S walkie talkies - Dual Band Radios 2pcs wireless Sets 2km":
+                - /url: /item/baofeng-888s-walkie-talkies-dual-band-radios-2pcs-wireless-sets-2km-iid-1108178915
+            - generic [ref=e768]:
+              - link "Baofeng 888S walkie talkies - Dual Band Radios 2pcs wireless Sets 2km":
+                - /url: /item/baofeng-888s-walkie-talkies-dual-band-radios-2pcs-wireless-sets-2km-iid-1108178915
+              - generic [ref=e770]:
+                - link "Baofeng 888S walkie talkies - Dual Band Radios 2pcs wireless Sets 2km":
+                  - /url: /item/baofeng-888s-walkie-talkies-dual-band-radios-2pcs-wireless-sets-2km-iid-1108178915
+                - generic "Price" [ref=e772]:
+                  - generic [ref=e773]: Rs 7,500
+                - generic "Title" [ref=e774]:
+                  - paragraph [ref=e775]: Baofeng 888S walkie talkies - Dual Band Radios 2pcs wireless Sets 2km
+                - img "Favorite icon" [ref=e778]
+                - generic [ref=e780]:
+                  - generic "Location" [ref=e781]: Blue Area, Islamabad
+                  - generic [ref=e782]: 3 weeks ago
+          - article [ref=e783] [cursor=pointer]:
+            - generic [ref=e784]:
+              - link "Audio mixer 12 channel":
+                - /url: /item/audio-mixer-12-channel-iid-1109417583
+            - generic [ref=e787]:
+              - link "Audio mixer 12 channel":
+                - /url: /item/audio-mixer-12-channel-iid-1109417583
+              - generic [ref=e789]:
+                - link "Audio mixer 12 channel":
+                  - /url: /item/audio-mixer-12-channel-iid-1109417583
+                - generic "Price" [ref=e791]:
+                  - generic [ref=e792]: Rs 85,000
+                - generic "Title" [ref=e793]:
+                  - paragraph [ref=e794]: Audio mixer 12 channel
+                - img "Favorite icon" [ref=e797]
+                - generic [ref=e799]:
+                  - generic "Location" [ref=e800]: Bahar Colony, Lahore
+                  - generic [ref=e801]: 4 weeks ago
+      - generic "Category with hits section" [ref=e802]:
+        - generic [ref=e803]:
+          - generic "Section Title" [ref=e804]: Tablets
+          - link "View more" [ref=e805] [cursor=pointer]:
+            - /url: /tablets_c1455
+            - generic [ref=e807]: View more
+        - generic [ref=e808]:
+          - article [ref=e809] [cursor=pointer]:
+            - generic [ref=e810]:
+              - link "Oppo Pad3 90fps pubg supported/ amoled big display":
+                - /url: /item/oppo-pad3-90fps-pubg-supported-amoled-big-display-iid-1099257191
+            - generic [ref=e813]:
+              - link "Oppo Pad3 90fps pubg supported/ amoled big display":
+                - /url: /item/oppo-pad3-90fps-pubg-supported-amoled-big-display-iid-1099257191
+              - generic [ref=e815]:
+                - link "Oppo Pad3 90fps pubg supported/ amoled big display":
+                  - /url: /item/oppo-pad3-90fps-pubg-supported-amoled-big-display-iid-1099257191
+                - generic "Price" [ref=e817]:
+                  - generic [ref=e818]: Rs 55,000
+                - generic "Title" [ref=e819]:
+                  - paragraph [ref=e820]: Oppo Pad3 90fps pubg supported/ amoled big display
+                - img "Favorite icon" [ref=e823]
+                - generic [ref=e825]:
+                  - generic "Location" [ref=e826]: GT Road, Gujranwala
+                  - generic [ref=e827]: 3 weeks ago
+          - article [ref=e828] [cursor=pointer]:
+            - generic [ref=e829]:
+              - link "Lenovo M10 Tablet | Importer | 10” Display | 2GB/16GB,3GB/32GB":
+                - /url: /item/lenovo-m10-tablet-importer-10-display-2gb16gb3gb32gb-iid-1086966524
+            - generic [ref=e832]:
+              - link "Lenovo M10 Tablet | Importer | 10” Display | 2GB/16GB,3GB/32GB":
+                - /url: /item/lenovo-m10-tablet-importer-10-display-2gb16gb3gb32gb-iid-1086966524
+              - generic [ref=e834]:
+                - link "Lenovo M10 Tablet | Importer | 10” Display | 2GB/16GB,3GB/32GB":
+                  - /url: /item/lenovo-m10-tablet-importer-10-display-2gb16gb3gb32gb-iid-1086966524
+                - generic "Price" [ref=e836]:
+                  - generic [ref=e837]: Rs 11,999
+                - generic "Title" [ref=e838]:
+                  - paragraph [ref=e839]: Lenovo M10 Tablet | Importer | 10” Display | 2GB/16GB,3GB/32GB
+                - img "Favorite icon" [ref=e842]
+                - generic [ref=e844]:
+                  - generic "Location" [ref=e845]: Korangi, Karachi
+                  - generic [ref=e846]: 2 weeks ago
+          - article [ref=e847] [cursor=pointer]:
+            - generic [ref=e848]:
+              - link "Apple iPad Air M3 11-Inch 128GB – Brand New (Box Opened)":
+                - /url: /item/apple-ipad-air-m3-11-inch-128gb-brand-new-box-opened-iid-1111084773
+            - generic [ref=e851]:
+              - link "Apple iPad Air M3 11-Inch 128GB – Brand New (Box Opened)":
+                - /url: /item/apple-ipad-air-m3-11-inch-128gb-brand-new-box-opened-iid-1111084773
+              - generic [ref=e853]:
+                - link "Apple iPad Air M3 11-Inch 128GB – Brand New (Box Opened)":
+                  - /url: /item/apple-ipad-air-m3-11-inch-128gb-brand-new-box-opened-iid-1111084773
+                - generic "Price" [ref=e855]:
+                  - generic [ref=e856]: Rs 1.55 Lac
+                - generic "Title" [ref=e857]:
+                  - paragraph [ref=e858]: Apple iPad Air M3 11-Inch 128GB – Brand New (Box Opened)
+                - img "Favorite icon" [ref=e861]
+                - generic [ref=e863]:
+                  - generic "Location" [ref=e864]: Cantt, Nowshera
+                  - generic [ref=e865]: 1 week ago
+          - article [ref=e866] [cursor=pointer]:
+            - generic [ref=e867]:
+              - link "Samsung Galaxy Tab A7 Lite Tablet":
+                - /url: /item/samsung-galaxy-tab-a7-lite-tablet-iid-1110514595
+            - generic [ref=e870]:
+              - link "Samsung Galaxy Tab A7 Lite Tablet":
+                - /url: /item/samsung-galaxy-tab-a7-lite-tablet-iid-1110514595
+              - generic [ref=e872]:
+                - link "Samsung Galaxy Tab A7 Lite Tablet":
+                  - /url: /item/samsung-galaxy-tab-a7-lite-tablet-iid-1110514595
+                - generic "Price" [ref=e874]:
+                  - generic [ref=e875]: Rs 22,000
+                - generic "Title" [ref=e876]:
+                  - paragraph [ref=e877]: Samsung Galaxy Tab A7 Lite Tablet
+                - img "Favorite icon" [ref=e880]
+                - generic [ref=e882]:
+                  - generic "Location" [ref=e883]: Abbot Road, Sialkot
+                  - generic [ref=e884]: 3 weeks ago
+      - generic "Category with hits section" [ref=e885]:
+        - generic [ref=e886]:
+          - generic "Section Title" [ref=e887]: Land & Plots
+          - link "View more" [ref=e888] [cursor=pointer]:
+            - /url: /land-plots_c40
+            - generic [ref=e890]: View more
+        - generic [ref=e891]:
+          - article [ref=e892] [cursor=pointer]:
+            - generic [ref=e893]:
+              - link "5 Marla Residential Plot Available. For Sale in Faisal Town F-18 Islamabad.":
+                - /url: /item/5-marla-residential-plot-available-for-sale-in-faisal-town-f-18-islamabad-iid-1110756787
+            - generic [ref=e896]:
+              - link "5 Marla Residential Plot Available. For Sale in Faisal Town F-18 Islamabad.":
+                - /url: /item/5-marla-residential-plot-available-for-sale-in-faisal-town-f-18-islamabad-iid-1110756787
+              - generic [ref=e898]:
+                - link "5 Marla Residential Plot Available. For Sale in Faisal Town F-18 Islamabad.":
+                  - /url: /item/5-marla-residential-plot-available-for-sale-in-faisal-town-f-18-islamabad-iid-1110756787
+                - generic "Price" [ref=e900]:
+                  - generic [ref=e901]: Rs 1.25 Crore
+                - generic "Title" [ref=e902]:
+                  - paragraph [ref=e903]: 5 Marla Residential Plot Available. For Sale in Faisal Town F-18 Islamabad.
+                - img "Favorite icon" [ref=e906]
+                - generic [ref=e908]:
+                  - generic "Location" [ref=e909]: Faisal Town - F-18, Islamabad
+                  - generic [ref=e910]: 2 weeks ago
+          - article [ref=e911] [cursor=pointer]:
+            - generic [ref=e912]:
+              - link "5 Marla Residential Plot Available For Sale In Etihad Town Phase 1 If You Hurry":
+                - /url: /item/5-marla-residential-plot-available-for-sale-in-etihad-town-phase-1-if-you-hurry-iid-1111292738
+            - generic [ref=e915]:
+              - link "5 Marla Residential Plot Available For Sale In Etihad Town Phase 1 If You Hurry":
+                - /url: /item/5-marla-residential-plot-available-for-sale-in-etihad-town-phase-1-if-you-hurry-iid-1111292738
+              - generic [ref=e917]:
+                - link "5 Marla Residential Plot Available For Sale In Etihad Town Phase 1 If You Hurry":
+                  - /url: /item/5-marla-residential-plot-available-for-sale-in-etihad-town-phase-1-if-you-hurry-iid-1111292738
+                - generic "Price" [ref=e919]:
+                  - generic [ref=e920]: Rs 1.45 Crore
+                - generic "Title" [ref=e921]:
+                  - paragraph [ref=e922]: 5 Marla Residential Plot Available For Sale In Etihad Town Phase 1 If You Hurry
+                - img "Favorite icon" [ref=e925]
+                - generic [ref=e927]:
+                  - generic "Location" [ref=e928]: Etihad Town Phase 1, Lahore
+                  - generic [ref=e929]: 4 hours ago
+          - article [ref=e930] [cursor=pointer]:
+            - generic [ref=e931]:
+              - link "40x80 Commerical Plot ll Top Heighted ll Best Investment Opportunity ll Gulberg Islamabad ll CDA Approved Layout":
+                - /url: /item/40x80-commerical-plot-ll-top-heighted-ll-best-investment-opportunity-ll-gulberg-islamabad-ll-cda-approved-layout-iid-1110194314
+            - generic [ref=e934]:
+              - link "40x80 Commerical Plot ll Top Heighted ll Best Investment Opportunity ll Gulberg Islamabad ll CDA Approved Layout":
+                - /url: /item/40x80-commerical-plot-ll-top-heighted-ll-best-investment-opportunity-ll-gulberg-islamabad-ll-cda-approved-layout-iid-1110194314
+              - generic [ref=e936]:
+                - link "40x80 Commerical Plot ll Top Heighted ll Best Investment Opportunity ll Gulberg Islamabad ll CDA Approved Layout":
+                  - /url: /item/40x80-commerical-plot-ll-top-heighted-ll-best-investment-opportunity-ll-gulberg-islamabad-ll-cda-approved-layout-iid-1110194314
+                - generic "Price" [ref=e938]:
+                  - generic [ref=e939]: Rs 10.75 Crore
+                - generic "Title" [ref=e940]:
+                  - paragraph [ref=e941]: 40x80 Commerical Plot ll Top Heighted ll Best Investment Opportunity ll Gulberg Islamabad ll CDA Approved Layout
+                - img "Favorite icon" [ref=e944]
+                - generic [ref=e946]:
+                  - generic "Location" [ref=e947]: Gulberg Business Square, Islamabad
+                  - generic [ref=e948]: 4 weeks ago
+          - article [ref=e949] [cursor=pointer]:
+            - generic [ref=e950]:
+              - link "I SELL 4MARLA PAIR PLOT IN J BLOCK FACING PARK":
+                - /url: /item/i-sell-4marla-pair-plot-in-j-block-facing-park-iid-1111260146
+            - generic [ref=e953]:
+              - link "I SELL 4MARLA PAIR PLOT IN J BLOCK FACING PARK":
+                - /url: /item/i-sell-4marla-pair-plot-in-j-block-facing-park-iid-1111260146
+              - generic [ref=e955]:
+                - link "I SELL 4MARLA PAIR PLOT IN J BLOCK FACING PARK":
+                  - /url: /item/i-sell-4marla-pair-plot-in-j-block-facing-park-iid-1111260146
+                - generic "Price" [ref=e957]:
+                  - generic [ref=e958]: Rs 1.40 Crore
+                - generic "Title" [ref=e959]:
+                  - paragraph [ref=e960]: I SELL 4MARLA PAIR PLOT IN J BLOCK FACING PARK
+                - img "Favorite icon" [ref=e963]
+                - generic [ref=e965]:
+                  - generic "Location" [ref=e966]: Bahria Orchard, Lahore
+                  - generic [ref=e967]: 1 day ago
+      - generic "Category with hits section" [ref=e968]:
+        - generic [ref=e969]:
+          - generic "Section Title" [ref=e970]: Jobs
+          - link "View more" [ref=e971] [cursor=pointer]:
+            - /url: /jobs_c4
+            - generic [ref=e973]: View more
+        - generic [ref=e974]:
+          - article [ref=e975] [cursor=pointer]:
+            - generic [ref=e976]:
+              - link "REQUIRE MALE/FEMALE FOR PART TIME JOB":
+                - /url: /item/require-malefemale-for-part-time-job-iid-1097905653
+            - generic [ref=e979]:
+              - link "REQUIRE MALE/FEMALE FOR PART TIME JOB":
+                - /url: /item/require-malefemale-for-part-time-job-iid-1097905653
+              - generic [ref=e981]:
+                - link "REQUIRE MALE/FEMALE FOR PART TIME JOB":
+                  - /url: /item/require-malefemale-for-part-time-job-iid-1097905653
+                - generic "Title" [ref=e983]:
+                  - paragraph [ref=e984]: REQUIRE MALE/FEMALE FOR PART TIME JOB
+                - img "Favorite icon" [ref=e987]
+                - generic [ref=e989]:
+                  - generic "Location" [ref=e990]: DHA Phase 1, Lahore
+                  - generic [ref=e991]: 4 weeks ago
+          - article [ref=e992] [cursor=pointer]:
+            - generic [ref=e993]:
+              - link "Field Sales Officer Required | FMCG | Job in Lahore":
+                - /url: /item/field-sales-officer-required-fmcg-job-in-lahore-iid-1110894437
+            - generic [ref=e996]:
+              - link "Field Sales Officer Required | FMCG | Job in Lahore":
+                - /url: /item/field-sales-officer-required-fmcg-job-in-lahore-iid-1110894437
+              - generic [ref=e998]:
+                - link "Field Sales Officer Required | FMCG | Job in Lahore":
+                  - /url: /item/field-sales-officer-required-fmcg-job-in-lahore-iid-1110894437
+                - generic "Title" [ref=e1000]:
+                  - paragraph [ref=e1001]: Field Sales Officer Required | FMCG | Job in Lahore
+                - img "Favorite icon" [ref=e1004]
+                - generic [ref=e1006]:
+                  - generic "Location" [ref=e1007]: Samanabad, Lahore
+                  - generic [ref=e1008]: 2 weeks ago
+          - article [ref=e1009] [cursor=pointer]:
+            - generic [ref=e1010]:
+              - link "SEO Jobs | SEO Internship Fresh / Beginer | Digital Marketing | Lahore":
+                - /url: /item/seo-jobs-seo-internship-fresh-beginer-digital-marketing-lahore-iid-1111072146
+            - generic [ref=e1013]:
+              - link "SEO Jobs | SEO Internship Fresh / Beginer | Digital Marketing | Lahore":
+                - /url: /item/seo-jobs-seo-internship-fresh-beginer-digital-marketing-lahore-iid-1111072146
+              - generic [ref=e1015]:
+                - link "SEO Jobs | SEO Internship Fresh / Beginer | Digital Marketing | Lahore":
+                  - /url: /item/seo-jobs-seo-internship-fresh-beginer-digital-marketing-lahore-iid-1111072146
+                - generic "Title" [ref=e1017]:
+                  - paragraph [ref=e1018]: SEO Jobs | SEO Internship Fresh / Beginer | Digital Marketing | Lahore
+                - img "Favorite icon" [ref=e1021]
+                - generic [ref=e1023]:
+                  - generic "Location" [ref=e1024]: Allama Iqbal Town - Huma Block, Lahore
+                  - generic [ref=e1025]: 1 week ago
+          - article [ref=e1026] [cursor=pointer]:
+            - generic [ref=e1027]:
+              - link "jobs in Saudia Arabia, Company Visa, Work visa, Plumber,Security Guard":
+                - /url: /item/jobs-in-saudia-arabia-company-visa-work-visa-plumbersecurity-guard-iid-1110466839
+            - generic [ref=e1030]:
+              - link "jobs in Saudia Arabia, Company Visa, Work visa, Plumber,Security Guard":
+                - /url: /item/jobs-in-saudia-arabia-company-visa-work-visa-plumbersecurity-guard-iid-1110466839
+              - generic [ref=e1032]:
+                - link "jobs in Saudia Arabia, Company Visa, Work visa, Plumber,Security Guard":
+                  - /url: /item/jobs-in-saudia-arabia-company-visa-work-visa-plumbersecurity-guard-iid-1110466839
+                - generic "Title" [ref=e1034]:
+                  - paragraph [ref=e1035]: jobs in Saudia Arabia, Company Visa, Work visa, Plumber,Security Guard
+                - img "Favorite icon" [ref=e1038]
+                - generic [ref=e1040]:
+                  - generic "Location" [ref=e1041]: Commercial Market, Rawalpindi
+                  - generic [ref=e1042]: 2 weeks ago
+  - generic [ref=e1044]:
+    - img "OLX mobile app" [ref=e1046]
+    - generic [ref=e1048]:
+      - link "App Store" [ref=e1049] [cursor=pointer]:
+        - /url: https://apps.apple.com/pk/app/olx-pakistan/id1551315538
+        - img "App Store" [ref=e1050]
+      - link "Google Play" [ref=e1051] [cursor=pointer]:
+        - /url: https://play.google.com/store/apps/details?id=com.olx.pk
+        - img "Google Play" [ref=e1052]
+      - link "App Gallery" [ref=e1053] [cursor=pointer]:
+        - /url: https://appgallery.huawei.com/#/app/C104375435
+        - img "App Gallery" [ref=e1054]
+  - contentinfo [ref=e1055]:
+    - generic [ref=e1057]:
+      - generic [ref=e1058]:
+        - generic [ref=e1059]: Popular Categories
+        - list [ref=e1060]:
+          - listitem [ref=e1061]:
+            - link "Cars" [ref=e1062] [cursor=pointer]:
+              - /url: /cars_c84
+          - listitem [ref=e1063]:
+            - link "Flats for rent" [ref=e1064] [cursor=pointer]:
+              - /url: /apartments-flats_c1723
+          - listitem [ref=e1065]:
+            - link "Mobile Phones" [ref=e1066] [cursor=pointer]:
+              - /url: /mobile-phones_c1453
+          - listitem [ref=e1067]:
+            - link "Jobs" [ref=e1068] [cursor=pointer]:
+              - /url: /jobs_c4
+      - generic [ref=e1069]:
+        - generic [ref=e1070]: Trending Searches
+        - list [ref=e1071]:
+          - listitem [ref=e1072]:
+            - link "Bikes" [ref=e1073] [cursor=pointer]:
+              - /url: /motorcycles_c81
+          - listitem [ref=e1074]:
+            - link "Watches" [ref=e1075] [cursor=pointer]:
+              - /url: /watches_c1970
+          - listitem [ref=e1076]:
+            - link "Books" [ref=e1077] [cursor=pointer]:
+              - /url: /books_c707080
+          - listitem [ref=e1078]:
+            - link "Dogs" [ref=e1079] [cursor=pointer]:
+              - /url: /dogs_c139
+      - generic [ref=e1080]:
+        - generic [ref=e1081]: About Us
+        - list [ref=e1082]:
+          - listitem [ref=e1083]:
+            - link "OLX Blog" [ref=e1084] [cursor=pointer]:
+              - /url: https://blog.olx.com.pk/
+          - listitem [ref=e1085]:
+            - link "Contact Us" [ref=e1086] [cursor=pointer]:
+              - /url: https://help.olx.com.pk/hc/en-us/articles/4403042207631-How-can-you-contact-Us-
+          - listitem [ref=e1087]:
+            - link "OLX for Businesses" [ref=e1088] [cursor=pointer]:
+              - /url: https://www.surveygizmo.com/s3/4910980/WP-Business-Form?source=Website
+      - generic [ref=e1089]:
+        - generic [ref=e1090]: OLX
+        - list [ref=e1091]:
+          - listitem [ref=e1092]:
+            - link "Help" [ref=e1093] [cursor=pointer]:
+              - /url: https://help.olx.com.pk/hc/en-us
+          - listitem [ref=e1094]:
+            - link "Sitemap" [ref=e1095] [cursor=pointer]:
+              - /url: /sitemap/most-popular
+          - listitem [ref=e1096]:
+            - link "Terms of use" [ref=e1097] [cursor=pointer]:
+              - /url: https://help.olx.com.pk/hc/en-us/articles/4402989977487-What-are-the-terms-of-use-
+          - listitem [ref=e1098]:
+            - link "Privacy Policy" [ref=e1099] [cursor=pointer]:
+              - /url: https://help.olx.com.pk/hc/en-us/categories/4402989237007-Legal-Privacy-information
+      - generic [ref=e1100]:
+        - generic [ref=e1101]: Follow Us
+        - generic [ref=e1102]:
+          - link [ref=e1103] [cursor=pointer]:
+            - /url: https://twitter.com/OLX_Pakistan
+            - img [ref=e1104]
+          - link [ref=e1107] [cursor=pointer]:
+            - /url: https://www.facebook.com/olxpakistan
+            - img [ref=e1108]
+          - link [ref=e1111] [cursor=pointer]:
+            - /url: https://www.youtube.com/channel/UCARDDjJnW7IRBpo_AP7WTHQ?sub_confirmation=1
+            - img [ref=e1112]
+          - link [ref=e1115] [cursor=pointer]:
+            - /url: https://www.instagram.com/olx.pakistan/
+            - img [ref=e1116]
+    - generic [ref=e1121]: Classifieds in Pakistan.© 2006 – 2026 OLX
+```

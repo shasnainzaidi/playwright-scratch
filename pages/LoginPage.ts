@@ -27,7 +27,7 @@ constructor(page: Page) {
         this.emailField = page.locator('input[type="email"]');
         this.passwordField = page.locator('input[type="password"]');
         this.submitButton = page.getByRole('button', { name: 'Log In' });
-        this.avatar = page.getByLabel('User profile picture');
+        this.avatar = page.getByAltText('User profile picture');
         this.userName = page.getByLabel('Username');
     }
 

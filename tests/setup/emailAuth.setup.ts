@@ -14,9 +14,8 @@ setup('authenticate', async ({ page }) => {
         loginData.validUser.password
     );
 
-    await page.waitForLoadState('networkidle');
-
+    await page.getByAltText('Go to chat');
     await page.context().storageState({
-        path: 'playwright/.auth/user.json'
+        path: 'playwright/.auth/emailAuth.json'
     });
 });
