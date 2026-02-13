@@ -1,7 +1,7 @@
 import { test as setup, request } from '@playwright/test';
 import { loginData } from '../../test-data/loginData';
 
-setup('api authenticate', async () => {
+setup('@regression api authenticate', async () => {
 
     const apiContext = await request.newContext();
 
