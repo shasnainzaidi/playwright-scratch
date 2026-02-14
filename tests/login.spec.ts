@@ -10,6 +10,7 @@ test.describe('@smoke Login Options', () => {
         const login = new LoginPage(page);
 
         await login.goto('/');
+
         await login.clickLogin();
 
         await expect(login.googleOption).toBeVisible();

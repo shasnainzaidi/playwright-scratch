@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { SearchPage } from '../pages/SearchPage';
+import { SearchPage } from '../../pages/SearchPage';
 
 test('@visual Search results page UI', async ({ page }) => {
 
