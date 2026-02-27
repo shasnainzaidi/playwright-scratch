@@ -25,17 +25,35 @@ TypeScript	Type safety & maintainability
 Dotenv	Secure environment configuration
 Allure Reporter	Advanced reporting
 HTML Reporter	Built-in Playwright report
+
+🛠 Initial Project Setup
+1️⃣ Clone Repository
+git clone <https://github.com/shasnainzaidi/playwright-scratch>
+cd playwright-ts-framework
+2️⃣ Install Dependencies
+npm install
+npx playwright install
+3️⃣ Run Tests
+npx playwright test
+
+
 🏗 Framework Architecture
-tests/
-├── setup/
-│     ├── emailAuth.setup.ts     → UI login session creation
-│     ├── apiAuth.setup.ts       → API login session creation
+playwright-ts-framework/
 │
+├── tests/
+    ├── setup/
+      ├── emailAuth.setup.ts     → UI login session creation
+      ├── apiAuth.setup.ts       → API login session creation
 ├── EmailLogin.spec.ts
 ├── Visual.spec.ts
-│
-pages/
-├── LoginPage.ts
+├── pages/
+    ├── LoginPage.ts
+├── scripts/
+├── prompts/
+├── .env
+├── playwright.config.ts
+├── tsconfig.json
+
 
 🔐 Authentication Strategy
 
@@ -126,6 +144,39 @@ Ideal for detecting unintended UI changes.
 ✅ CI-friendly retries
 ✅ Failure artifacts (trace/video/screenshots)
 
+🤖 Jira Story Integration
+Fetch Story from Jira
+node scripts/generateWithJira.ts SCRUM-3
+
+This generates:
+
+prompts/SCRUM-3.md
+
+🧠 AI-Assisted Test Generation
+
+Open the generated story file and use GitHub Copilot Chat to generate:
+
+Manual Test Cases
+
+Playwright Automation Scripts
+
+Edge Cases & Validations
+
+🏛 Architecture
+Jira → Node API Script → Story Markdown → AI → Test Files
+
+⚙ Technologies Used
+
+Node.js (ESM)
+
+Axios
+
+Dotenv
+
+Jira REST API
+
+GitHub Copilot
+
 Future Enhancements
 
 CI/CD pipeline integration (GitHub Actions / Jenkins)
@@ -139,6 +190,16 @@ Data-driven testing
 Contract testing
 
 Lighthouse performance audits
+
+Full automated AI test generation
+
+CI/CD integration
+
+Jenkins pipeline
+
+Auto PR creation
+
+MCP-based AI agents
 
 Author
 
