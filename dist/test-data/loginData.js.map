@@ -1,0 +1,1 @@
+{"version":3,"file":"loginData.js","sourceRoot":"","sources":["../../test-data/loginData.ts"],"names":[],"mappings":";;;AAAa,QAAA,SAAS,GAAG;IACrB,SAAS,EAAE;QACP,KAAK,EAAE,OAAO,CAAC,GAAG,CAAC,UAAW;QAC9B,QAAQ,EAAE,OAAO,CAAC,GAAG,CAAC,aAAc;QACpC,KAAK,EAAE,OAAO,CAAC,GAAG,CAAC,UAAW;QAC9B,QAAQ,EAAE,oBAAoB;KACjC;CACJ,CAAC"}
