@@ -2,7 +2,7 @@
 
 A scalable, production-ready UI and API automation framework built using Playwright + TypeScript, designed to support:
 
-**UI authentication via Email
+UI authentication via Email
 
 API authentication via Phone
 
@@ -14,7 +14,7 @@ Storage-state based session reuse
 
 CI-ready configuration
 
-Allure & HTML reporting**
+Allure & HTML reporting
 
 This framework follows modern automation architecture practices focused on speed, stability, and maintainability.
 
@@ -26,7 +26,7 @@ Dotenv	Secure environment configuration
 Allure Reporter	Advanced reporting
 HTML Reporter	Built-in Playwright report
 
-🛠 Initial Project Setup
+**Initial Project Setup**
 1️⃣ Clone Repository
 git clone <https://github.com/shasnainzaidi/playwright-scratch>
 cd playwright-ts-framework
@@ -37,7 +37,7 @@ npx playwright install
 npx playwright test
 
 
-🏗 Framework Architecture
+**Framework Architecture**
 playwright-ts-framework/
 │
 ├── tests/
@@ -55,7 +55,7 @@ playwright-ts-framework/
 ├── tsconfig.json
 
 
-🔐 Authentication Strategy
+**Authentication Strategy**
 
 This framework uses Playwright Storage State to eliminate repeated logins and drastically reduce execution time.
 
@@ -95,7 +95,7 @@ chromium-phone → API authenticated tests
 
 Authentication setup runs automatically using project dependencies.
 
-▶️ Running Tests
+▶ Running Tests
 Run All Tests
 npx playwright test
 
@@ -111,7 +111,7 @@ npx playwright test --headed
 Debug Mode
 npx playwright test --debug
 
-📊 Reports
+**Reporting**
 HTML Report
 npx playwright show-report
 
@@ -119,7 +119,7 @@ Allure Report
 allure serve allure-results
 
 
-👁 Visual Testing
+**Visual Testing**
 
 Playwright supports automatic visual comparison against baseline images.
 
@@ -144,7 +144,7 @@ Ideal for detecting unintended UI changes.
 ✅ CI-friendly retries
 ✅ Failure artifacts (trace/video/screenshots)
 
-🤖 Jira Story Integration
+**Jira Story Integration**
 Fetch Story from Jira
 node scripts/generateWithJira.ts SCRUM-3
 
