@@ -99,21 +99,17 @@ projects: [
     {
       name: 'ae-auth',
       testDir: './tests/stage/auth',
-      dependencies: ['ae-auth-setup'],
       use: {
         baseURL: process.env.AE_URL,
         browserName: 'chromium',
-        storageState: 'playwright/.auth/aeAuth.json',
       },
     },
     {
       name: 'ae-forms',
       testDir: './tests/stage/forms',
-      dependencies: ['ae-auth-setup'],
       use: {
         baseURL: process.env.AE_URL,
         browserName: 'chromium',
-        storageState: 'playwright/.auth/aeAuth.json',
       },
     },
     {
