@@ -24,7 +24,7 @@ export class LoginPage {
         this.emailOption = page.locator('text=Login with Email');
         this.facebookOption = page.locator('text=Login with Facebook');
         this.emailField = page.locator('input[type="email"]');
-        this.phoneField = page.locator('input[type="tel"], input[name="phone"], input[type="text"][inputmode="tel"]');
+        this.phoneField = page.locator('input[type="tel"]');
         this.passwordField = page.locator('input[type="password"]');
         this.submitButton = page.getByRole('button', { name: 'Log In' });
         this.avatar = page.getByAltText('User profile picture');
