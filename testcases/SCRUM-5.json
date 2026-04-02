@@ -1,0 +1,78 @@
+[
+  {
+    "title": "AC1.1 - Verify login form is available at Signup/Login page",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Page loads successfully" },
+      { "step": "Verify login form is visible", "expected": "Login form container is displayed" },
+      { "step": "Verify email input field is present", "expected": "Email input field is visible and accessible" },
+      { "step": "Verify password input field is present", "expected": "Password input field is visible and accessible" },
+      { "step": "Verify submit button is present", "expected": "Submit/Login button is visible and enabled" }
+    ]
+  },
+  {
+    "title": "AC2.1 - Successful login with valid credentials",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Enter valid email address", "expected": "Email is populated in the email field" },
+      { "step": "Enter correct password", "expected": "Password is populated in the password field" },
+      { "step": "Click submit/login button", "expected": "Form submission initiated" },
+      { "step": "Wait for page redirect", "expected": "User is redirected to dashboard/homepage" },
+      { "step": "Verify user is authenticated", "expected": "User session is active and profile visible" }
+    ]
+  },
+  {
+    "title": "AC3.1 - Error displayed for incorrect password",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Enter valid registered email", "expected": "Email is populated correctly" },
+      { "step": "Enter incorrect password", "expected": "Password field filled with wrong password" },
+      { "step": "Click submit/login button", "expected": "Form is submitted" },
+      { "step": "Verify error message appears", "expected": "Error message 'Incorrect credentials' or similar is displayed" },
+      { "step": "Verify user is not logged in", "expected": "User remains on login page, session not created" }
+    ]
+  },
+  {
+    "title": "AC3.2 - Error displayed for unregistered email",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Enter non-existent email address", "expected": "Email is populated in the field" },
+      { "step": "Enter any password", "expected": "Password field is filled" },
+      { "step": "Click submit/login button", "expected": "Form is submitted" },
+      { "step": "Verify error message appears", "expected": "Error message indicating user not found or invalid credentials is displayed" },
+      { "step": "Verify user is not logged in", "expected": "User remains on login page" }
+    ]
+  },
+  {
+    "title": "AC4.1 - Validation warning when both fields are empty",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Leave email field empty", "expected": "Email field is blank" },
+      { "step": "Leave password field empty", "expected": "Password field is blank" },
+      { "step": "Click submit/login button", "expected": "Form submission attempted" },
+      { "step": "Verify validation warnings appear", "expected": "Required field messages appear for empty fields" },
+      { "step": "Verify form is not submitted", "expected": "User remains on login page, no redirect occurs" }
+    ]
+  },
+  {
+    "title": "AC4.2 - Validation warning when email field is empty",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Leave email field empty", "expected": "Email field is blank" },
+      { "step": "Enter password in password field", "expected": "Password is populated" },
+      { "step": "Click submit/login button", "expected": "Form submission attempted" },
+      { "step": "Verify email validation warning appears", "expected": "'Required field' or 'Email is required' message is displayed" },
+      { "step": "Verify form is not submitted", "expected": "User remains on login page" }
+    ]
+  },
+  {
+    "title": "AC4.3 - Validation warning when password field is empty",
+    "steps": [
+      { "step": "Navigate to the Signup/Login page", "expected": "Login page loads" },
+      { "step": "Enter email address", "expected": "Email is populated in the field" },
+      { "step": "Leave password field empty", "expected": "Password field is blank" },
+      { "step": "Click submit/login button", "expected": "Form submission attempted" },
+      { "step": "Verify password validation warning appears", "expected": "'Required field' or 'Password is required' message is displayed" },
+      { "step": "Verify form is not submitted", "expected": "User remains on login page" }
+    ]
+  }
+]

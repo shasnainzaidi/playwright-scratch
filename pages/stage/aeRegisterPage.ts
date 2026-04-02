@@ -1,7 +1,130 @@
 import { Page, Locator, expect } from '@playwright/test';
 
+export interface AccountData {
+  password: string;
+  day: string;
+  month: string;
+  year: string;
+  firstName: string;
+  lastName: string;
+  address: string;
+  country: string;
+  state: string;
+  city: string;
+  zipcode: string;
+  mobile: string;
+}
+
 export class AeRegisterPage {
   readonly page: Page;
+
+  // ── Test Data ──────────────────────────────────────
+  static readonly ACCOUNT_DATA = {
+    johnAutomation: {
+      password: 'SecurePass123!',
+      day: '15',
+      month: '3',
+      year: '1990',
+      firstName: 'John',
+      lastName: 'Automation',
+      address: '123 Test Street',
+      country: 'United States',
+      state: 'New York',
+      city: 'New York',
+      zipcode: '10001',
+      mobile: '+12125551234'
+    } as AccountData,
+
+    maryOBrien: {
+      password: 'TestPass456!',
+      day: '22',
+      month: '6',
+      year: '1985',
+      firstName: 'Mary',
+      lastName: "O'Brien-Smith",
+      address: '456 Special Ave',
+      country: 'United Kingdom',
+      state: 'England',
+      city: 'London',
+      zipcode: 'SW1A 1AA',
+      mobile: '+442071838750'
+    } as AccountData,
+
+    alexanderMontgomery: {
+      password: 'LongTest123!',
+      day: '1',
+      month: '1',
+      year: '1980',
+      firstName: 'Alexander Christopher',
+      lastName: 'Montgomery III',
+      address: '789 Long Name Lane',
+      country: 'Canada',
+      state: 'Ontario',
+      city: 'Toronto',
+      zipcode: 'M5H 2N2',
+      mobile: '+14165551234'
+    } as AccountData,
+
+    redirectTest: {
+      password: 'RedirectTest123!',
+      day: '10',
+      month: '5',
+      year: '1992',
+      firstName: 'Redirect',
+      lastName: 'Test',
+      address: '100 Redirect Way',
+      country: 'Australia',
+      state: 'Victoria',
+      city: 'Melbourne',
+      zipcode: '3000',
+      mobile: '+61261881234'
+    } as AccountData,
+
+    successMessage: {
+      password: 'SuccessMsg123!',
+      day: '20',
+      month: '8',
+      year: '1995',
+      firstName: 'Success',
+      lastName: 'Test',
+      address: '200 Success Road',
+      country: 'India',
+      state: 'Karnataka',
+      city: 'Bangalore',
+      zipcode: '560001',
+      mobile: '+918001801234'
+    } as AccountData,
+
+    loginTest: {
+      password: 'LoginTest123!',
+      day: '5',
+      month: '12',
+      year: '1988',
+      firstName: 'Login',
+      lastName: 'Test',
+      address: '300 Login Lane',
+      country: 'Germany',
+      state: 'Bayern',
+      city: 'Munich',
+      zipcode: '80001',
+      mobile: '+498921551234'
+    } as AccountData,
+
+    loginRedirect: {
+      password: 'LoginRedir123!',
+      day: '18',
+      month: '7',
+      year: '1993',
+      firstName: 'LoginRedir',
+      lastName: 'Test',
+      address: '400 Login Street',
+      country: 'France',
+      state: 'Île-de-France',
+      city: 'Paris',
+      zipcode: '75001',
+      mobile: '+33142741234'
+    } as AccountData
+  };
 
   // ── Locators ───────────────────────────────────────
   readonly nameInput: Locator;

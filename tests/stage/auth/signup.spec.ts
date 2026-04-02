@@ -62,21 +62,6 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `autotest.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'SecurePass123!',
-      day: '15',
-      month: '3',
-      year: '1990',
-      firstName: 'John',
-      lastName: 'Automation',
-      address: '123 Test Street',
-      country: 'United States',
-      state: 'New York',
-      city: 'New York',
-      zipcode: '10001',
-      mobile: '+12125551234'
-    };
-
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     
@@ -85,7 +70,7 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
     await registerPage.page.waitForLoadState('networkidle');
 
     // Complete account details
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.johnAutomation);
     await registerPage.submitCreateAccount();
 
     // Verify account created
@@ -102,26 +87,11 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `special.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'TestPass456!',
-      day: '22',
-      month: '6',
-      year: '1985',
-      firstName: 'Mary',
-      lastName: "O'Brien-Smith",
-      address: '456 Special Ave',
-      country: 'United Kingdom',
-      state: 'England',
-      city: 'London',
-      zipcode: 'SW1A 1AA',
-      mobile: '+442071838750'
-    };
-
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.maryOBrien);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -137,26 +107,11 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `longname.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'LongTest123!',
-      day: '1',
-      month: '1',
-      year: '1980',
-      firstName: 'Alexander Christopher',
-      lastName: 'Montgomery III',
-      address: '789 Long Name Lane',
-      country: 'Canada',
-      state: 'Ontario',
-      city: 'Toronto',
-      zipcode: 'M5H 2N2',
-      mobile: '+14165551234'
-    };
-
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.alexanderMontgomery);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -314,28 +269,13 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `redirect.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'RedirectTest123!',
-      day: '10',
-      month: '5',
-      year: '1992',
-      firstName: 'Redirect',
-      lastName: 'Test',
-      address: '100 Redirect Way',
-      country: 'Australia',
-      state: 'Victoria',
-      city: 'Melbourne',
-      zipcode: '3000',
-      mobile: '+61261881234'
-    };
-
     await registerPage.goto();
     const initialUrl = page.url();
 
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.redirectTest);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -357,26 +297,11 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `success.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'SuccessMsg123!',
-      day: '20',
-      month: '8',
-      year: '1995',
-      firstName: 'Success',
-      lastName: 'Test',
-      address: '200 Success Road',
-      country: 'India',
-      state: 'Karnataka',
-      city: 'Bangalore',
-      zipcode: '560001',
-      mobile: '+918001801234'
-    };
-
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.successMessage);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -400,27 +325,12 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `login.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'LoginTest123!',
-      day: '5',
-      month: '12',
-      year: '1988',
-      firstName: 'Login',
-      lastName: 'Test',
-      address: '300 Login Lane',
-      country: 'Germany',
-      state: 'Bayern',
-      city: 'Munich',
-      zipcode: '80001',
-      mobile: '+498921551234'
-    };
-
     // Step 1: Create account
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.loginTest);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -437,7 +347,7 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
 
     // Step 5: Login again with new credentials
     await loginPage.goto();
-    await loginPage.login(signupData.email, accountData.password);
+    await loginPage.login(signupData.email, AeRegisterPage.ACCOUNT_DATA.loginTest.password);
     await page.waitForLoadState('networkidle');
 
     // Step 6: Verify logged in
@@ -454,27 +364,12 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
       email: `loginredir.${timestamp}@test.com`
     };
 
-    const accountData = {
-      password: 'LoginRedir123!',
-      day: '18',
-      month: '7',
-      year: '1993',
-      firstName: 'LoginRedir',
-      lastName: 'Test',
-      address: '400 Login Street',
-      country: 'France',
-      state: 'Île-de-France',
-      city: 'Paris',
-      zipcode: '75001',
-      mobile: '+33142741234'
-    };
-
     // Create account
     await registerPage.goto();
     await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
     await registerPage.page.waitForLoadState('networkidle');
 
-    await registerPage.fillAccountDetails(accountData);
+    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.loginRedirect);
     await registerPage.submitCreateAccount();
     await registerPage.page.waitForLoadState('networkidle');
 
@@ -489,7 +384,7 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
     // Login and verify redirect
     const beforeLoginUrl = page.url();
     await loginPage.goto();
-    await loginPage.login(signupData.email, accountData.password);
+    await loginPage.login(signupData.email, AeRegisterPage.ACCOUNT_DATA.loginRedirect.password);
     await page.waitForLoadState('networkidle');
 
     const afterLoginUrl = page.url();
