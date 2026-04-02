@@ -12,8 +12,9 @@ import { AeLoginPage } from '../../../pages/stage/aeLoginPage';
 test.describe('@signup SCRUM-4: User Registration Flow', () => {
 
   test.beforeEach(async ({ page }) => {
-    // Navigate to automation exercise using AE_URL from .env
-    await page.goto(process.env.AE_URL || 'https://automationexercise.com/');
+    // Navigate to automation exercise using AE_URL from .env via page object
+    const homePage = new AeHomePage(page);
+    await homePage.goto();
   });
 
   // ══════════════════════════════════════════════════════
