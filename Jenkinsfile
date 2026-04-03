@@ -1,10 +1,8 @@
 pipeline {
     agent any
 
-
-
-    environment {
-        BASE_URL = 'https://www.olx.com.pk'
+    tools {
+        nodejs "Node18"
     }
 
     stages {
