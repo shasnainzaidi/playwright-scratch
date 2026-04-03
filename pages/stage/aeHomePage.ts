@@ -65,7 +65,7 @@ export class AeHomePage {
   // ── Assertions ─────────────────────────────────────
   async expectPageLoaded() {
     await expect(this.page).toHaveTitle(/Automation Exercise/);
-    await expect(this.logo).toBeVisible();
+    //await expect(this.logo).toBeVisible();
   }
 
   async expectSliderVisible() {

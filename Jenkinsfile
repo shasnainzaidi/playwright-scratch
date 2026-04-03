@@ -1,56 +1,56 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs "Node18"
+
+
+    environment {
+        BASE_URL = 'https://www.olx.com.pk'
     }
 
     stages {
 
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                git branch: 'main',
-                url: 'YOUR_REPO_URL'
+                git branch: 'main', url: 'https://github.com/YOUR_USERNAME/YOUR_REPO.git'
             }
         }
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
+                bat 'npm ci'
+                bat 'npx playwright install'
             }
         }
 
-        stage('Install Browsers') {
+        stage('Run Smoke Tests') {
             steps {
-                sh 'npx playwright install --with-deps'
+                bat 'npx playwright test --project=smoke'
             }
         }
 
-        stage('Auth Setup') {
+        stage('Run Regression Tests') {
+            when {
+                branch 'main'
+            }
             steps {
-                sh 'npx playwright test --project=email-auth'
-                sh 'npx playwright test --project=phone-auth'
+                bat 'npx playwright test --project=regression'
             }
         }
 
-        stage('Run Tests') {
+        stage('Publish HTML Report') {
             steps {
-                sh 'npx playwright test'
-            }
-        }
-
-        stage('Allure Report') {
-            steps {
-                allure includeProperties: false,
-                       jdk: '',
-                       results: [[path: 'allure-results']]
+                publishHTML([
+                    reportDir: 'playwright-report',
+                    reportFiles: 'index.html',
+                    reportName: 'Playwright Report'
+                ])
             }
         }
     }
 
     post {
         always {
-            archiveArtifacts artifacts: 'playwright-report/**'
+            archiveArtifacts artifacts: 'playwright-report/**', allowEmptyArchive: true
         }
     }
 }
