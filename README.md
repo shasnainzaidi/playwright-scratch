@@ -1,6 +1,13 @@
-**Playwright TypeScript Automation Framework**
+**Playwright AI-Driven Test Automation Framework**
 
-A scalable, production-ready UI and API automation framework built using Playwright + TypeScript, designed to support:
+This project is a modern, scalable test automation framework built using Playwright + TypeScript, enhanced with AI-assisted test generation and Test Management integration.
+
+It demonstrates a complete QA pipeline:
+
+Jira → Structured Story → AI Prompt → Test Cases (Manual + Automation) → TestMo → Playwright Execution → CI (Jenkins)
+
+The goal is to reduce manual effort, improve consistency, and accelerate test creation using AI while maintaining production-level structure and control.
+Designed to support:
 
 UI authentication via Email
 
@@ -18,6 +25,17 @@ Allure & HTML reporting
 
 This framework follows modern automation architecture practices focused on speed, stability, and maintainability.
 
+**Key Features**
+✅ Playwright-based UI automation (Chromium)
+✅ Environment-driven execution using .env
+✅ Tag-based execution (@smoke, @regression)
+✅ Authentication reuse via storage state
+✅ AI-assisted test generation (GitHub Copilot)
+✅ Jira integration (story extraction via API)
+✅ Automated Test Case creation in TestMo
+✅ CI-ready architecture (Jenkins compatible)
+✅ Scalable and modular folder structure
+
 **Tech Stack**
 Tool	Purpose
 Playwright	End-to-end test automation
@@ -27,32 +45,42 @@ Allure Reporter	Advanced reporting
 HTML Reporter	Built-in Playwright report
 
 **Initial Project Setup**
-1️⃣ Clone Repository
+1. Clone Repository
 git clone <https://github.com/shasnainzaidi/playwright-scratch>
 cd playwright-ts-framework
-2️⃣ Install Dependencies
+2.  Install Dependencies
 npm install
 npx playwright install
-3️⃣ Run Tests
+3. Run Tests
 npx playwright test
+4. Configure Environment
 
+Create .env file:
+
+# Jira
+JIRA_BASE_URL=https://hasnainz.atlassian.net
+JIRA_EMAIL
+JIRA_API_TOKEN
+
+# TestMo
+TESTMO_BASE_URL=https://playwrighttest.testmo.net
+TESTMO_API_TOKEN
 
 **Framework Architecture**
-playwright-ts-framework/
-│
-├── tests/
-    ├── setup/
-      ├── emailAuth.setup.ts     → UI login session creation
-      ├── apiAuth.setup.ts       → API login session creation
-├── EmailLogin.spec.ts
-├── Visual.spec.ts
-├── pages/
-    ├── LoginPage.ts
-├── scripts/
-├── prompts/
-├── .env
-├── playwright.config.ts
-├── tsconfig.json
+playwright-ts-framework/ 
+ tests/ 
+    ├── setup/ # Authentication setup
+    ├── visuals/ # Visual test cases 
+    ├── stage/ # Stage-specific scenarios 
+         └── *.spec.ts # Feature-based test files
+ pages/ # Page Object Models 
+ test-data/ # Test data files
+ prompts/ # AI prompts & Jira exports 
+ scripts/ # Automation scripts (Jira, TestMo)
+ playwright.config.ts # Core framework configuration 
+ .env # Environment variables 
+ package.json # Dependencies & scripts 
+ Jenkinsfile # CI pipeline
 
 
 **Authentication Strategy**
@@ -144,6 +172,27 @@ Ideal for detecting unintended UI changes.
 ✅ CI-friendly retries
 ✅ Failure artifacts (trace/video/screenshots)
 
+**AI Integration (GitHub Copilot)**
+Why GitHub Copilot?
+
+We selected GitHub Copilot because:
+
+Seamless integration with VS Code
+Free/student access options
+Strong support for test generation
+Context-aware suggestions
+How It Works in This Project
+Jira story is extracted into structured Markdown
+A prompt template is combined with story content
+Final prompt is opened in VS Code
+Copilot generates:
+✅ Manual Test Cases
+✅ Playwright Automation Scripts
+Example Workflow
+SCRUM-5 → generateWithJira.ts → prompts/SCRUM-5.md
+→ combine prompt → AI input file
+→ Copilot generates test cases
+
 **Jira Story Integration**
 Fetch Story from Jira
 node scripts/generateWithJira.ts SCRUM-3
@@ -177,9 +226,44 @@ Jira REST API
 
 GitHub Copilot
 
+**Test Case Generation (Manual + Automation)**
+Step 1: Generate AI Prompt
+node scripts/generatePrompt.ts SCRUM-5
+Step 2: Use Copilot Chat
+Open generated file in VS Code
+Ask Copilot:
+Generate detailed manual test cases in JSON
+Generate Playwright test scripts
+Output
+Manual Test Cases (JSON)
+[
+  {
+    "title": "Verify login with valid credentials",
+    "steps": [
+      { "step": "Enter email", "expected": "Email accepted" }
+    ]
+  }
+]
+Automation Tests
+test('@smoke Login test', async ({ page }) => {
+  await page.goto('/');
+});
+📊 TestMo Integration
+Purpose
+
+Automate test case creation in Test Management system.
+
+Script Used
+node scripts/PushToTestMo.js testcases.json
+What It Does
+Reads AI-generated JSON
+Maps to TestMo format
+Uploads test cases via API
+Creates test cases in bulk
+
 Future Enhancements
 
-CI/CD pipeline integration (GitHub Actions / Jenkins)
+CI/CD pipeline integration (Jenkins)
 
 Docker execution
 
