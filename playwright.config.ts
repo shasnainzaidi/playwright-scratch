@@ -15,6 +15,7 @@ export default defineConfig({
 
   reporter: [
     ['html'],
+    ['json', { outputFile: 'test-results/results.json' }],
     ['allure-playwright']
   ],
 
@@ -46,7 +47,30 @@ export default defineConfig({
       use: {
         storageState: 'playwright/.auth/emailAuth.json'
       }
-    }
+    },
+
+    // ✅ AUTOMATION EXERCISE (AE) PROJECTS
+    {
+      name: 'ae-forms',
+      testDir: './tests/stage/forms',
+      use: {
+        baseURL: process.env.AE_URL || 'https://automationexercise.com',
+        browserName: 'chromium',
+        headless: true,
+        screenshot: 'only-on-failure',
+        video: 'retain-on-failure',
+        trace: 'on-first-retry',
+      },
+    },
+
+    {
+      name: 'ae-auth',
+      testDir: './tests/stage/auth',
+      use: {
+        baseURL: process.env.AE_URL || 'https://automationexercise.com',
+        browserName: 'chromium',
+      },
+    },
 
   ]
 
