@@ -3,7 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build": "tsc",
+    "jira": "node dist/scripts/generateWithJira.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -14,15 +17,10 @@
     "allure-playwright": "^3.4.5",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
-    
   },
   "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.29.0",
     "axios": "^1.13.5",
     "dotenv": "^17.3.1"
-    
-  },
-  "scripts": {
-  "build": "tsc",
-  "jira": "node dist/scripts/generateWithJira.ts"
-}
+  }
 }

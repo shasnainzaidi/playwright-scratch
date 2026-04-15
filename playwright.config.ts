@@ -72,6 +72,15 @@ export default defineConfig({
       },
     },
 
+    {
+      name: 'stage',
+      testDir: './tests/stage/ui',
+      use: {
+        baseURL: process.env.AE_URL || 'https://automationexercise.com',
+        browserName: 'chromium',
+      },
+    },
+
   ]
 
 });

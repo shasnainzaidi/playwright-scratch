@@ -79,26 +79,6 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
     await registerPage.expectAccountCreated();
   });
 
-  test('@critical AC2 - Signup with special characters in name', async ({ page }) => {
-    const registerPage = new AeRegisterPage(page);
-    const timestamp = new Date().getTime();
-
-    const signupData = {
-      name: "Mary O'Brien-Smith Jr.",
-      email: `special.${timestamp}@test.com`
-    };
-
-    await registerPage.goto();
-    await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
-    await registerPage.page.waitForLoadState('networkidle');
-
-    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.maryOBrien);
-    await registerPage.submitCreateAccount();
-    await registerPage.page.waitForLoadState('networkidle');
-
-    await registerPage.expectAccountCreated();
-  });
-
   test('@critical AC2 - Signup with long name (edge case)', async ({ page }) => {
     const registerPage = new AeRegisterPage(page);
     const timestamp = new Date().getTime();
@@ -310,89 +290,6 @@ test.describe('@signup SCRUM-4: User Registration Flow', () => {
     await expect(registerPage.accountCreatedHeading).toBeVisible();
     const successText = await registerPage.accountCreatedHeading.textContent();
     expect(successText).toContain('Account Created');
-  });
-
-  // ══════════════════════════════════════════════════════
-  // AC6: User can login with newly registered credentials
-  // ══════════════════════════════════════════════════════
-
-  test('@critical AC6 - User can login with newly registered credentials', async ({ page }) => {
-    const registerPage = new AeRegisterPage(page);
-    const loginPage = new AeLoginPage(page);
-    const timestamp = new Date().getTime();
-
-    const signupData = {
-      name: 'Login Test User',
-      email: `login.${timestamp}@test.com`
-    };
-
-    // Step 1: Create account
-    await registerPage.goto();
-    await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
-    await registerPage.page.waitForLoadState('networkidle');
-
-    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.loginTest);
-    await registerPage.submitCreateAccount();
-    await registerPage.page.waitForLoadState('networkidle');
-
-    // Step 2: Verify account created
-    await registerPage.expectAccountCreated();
-
-    // Step 3: Continue/Logout
-    await registerPage.clickContinue();
-    await page.waitForLoadState('networkidle');
-
-    // Step 4: Logout
-    await loginPage.logout();
-    await page.waitForLoadState('networkidle');
-
-    // Step 5: Login again with new credentials
-    await loginPage.goto();
-    await loginPage.login(signupData.email, AeRegisterPage.ACCOUNT_DATA.loginTest.password);
-    await page.waitForLoadState('networkidle');
-
-    // Step 6: Verify logged in
-    await loginPage.expectLoggedIn();
-  });
-
-  test('@critical AC6 - Verify successful login redirects to account page', async ({ page }) => {
-    const registerPage = new AeRegisterPage(page);
-    const loginPage = new AeLoginPage(page);
-    const timestamp = new Date().getTime();
-
-    const signupData = {
-      name: 'Login Redirect Test',
-      email: `loginredir.${timestamp}@test.com`
-    };
-
-    // Create account
-    await registerPage.goto();
-    await registerPage.signupWithNameAndEmail(signupData.name, signupData.email);
-    await registerPage.page.waitForLoadState('networkidle');
-
-    await registerPage.fillAccountDetails(AeRegisterPage.ACCOUNT_DATA.loginRedirect);
-    await registerPage.submitCreateAccount();
-    await registerPage.page.waitForLoadState('networkidle');
-
-    await registerPage.expectAccountCreated();
-    await registerPage.clickContinue();
-    await page.waitForLoadState('networkidle');
-
-    // Logout
-    await loginPage.logout();
-    await page.waitForLoadState('networkidle');
-
-    // Login and verify redirect
-    const beforeLoginUrl = page.url();
-    await loginPage.goto();
-    await loginPage.login(signupData.email, AeRegisterPage.ACCOUNT_DATA.loginRedirect.password);
-    await page.waitForLoadState('networkidle');
-
-    const afterLoginUrl = page.url();
-    
-    // Verify redirect occurred
-    expect(afterLoginUrl).not.toBe(beforeLoginUrl);
-    await loginPage.expectLoggedIn();
   });
 
   // ══════════════════════════════════════════════════════

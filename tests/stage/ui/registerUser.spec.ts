@@ -1,5 +1,5 @@
 import { test, expect } from '@playwright/test';
-import { AeHomePage } from '../pages/stage/aeHomePage';
+import { AeHomePage } from '../../../pages/stage/aeHomePage';
 
 test.describe.configure({ mode: 'serial' });
 
