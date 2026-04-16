@@ -1,0 +1,71 @@
+[
+  {
+    "id": "SCRUM-5-TC-05",
+    "title": "AC3 - Negative scenario - Incorrect password",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to login page",
+        "expected": "Login form loads"
+      },
+      {
+        "step": "Enter valid email with wrong password",
+        "expected": "Credentials are entered"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "Error message 'Incorrect credentials' is displayed"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-5-TC-07",
+    "title": "AC4 - Empty password field shows validation warning",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to login page",
+        "expected": "Login form is displayed"
+      },
+      {
+        "step": "Enter valid email and leave password field empty",
+        "expected": "Password field is empty"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "'Required field' or 'Password is required' validation message is displayed for password field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-5-TC-08",
+    "title": "AC4 - Negative scenario - Blank inputs",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to login page",
+        "expected": "Login form loads"
+      },
+      {
+        "step": "Leave both email and password fields empty",
+        "expected": "Fields remain empty"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "'Required field' messages displayed for both fields"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "jira": "node dist/scripts/generateWithJira.ts"
+    "jira": "tsx scripts/generateWithJira.ts",
+    "testcases": "tsx scripts/generateTestCases.ts",
+    "push-testmo": "tsx scripts/pushToTestmo.ts",
+    "pipeline": "tsx scripts/pipeline.ts"
   },
   "keywords": [],
   "author": "",
@@ -16,6 +19,7 @@
     "@types/node": "^25.3.0",
     "allure-playwright": "^3.4.5",
     "ts-node": "^10.9.2",
+    "tsx": "^4.19.2",
     "typescript": "^5.9.3"
   },
   "dependencies": {

@@ -2,65 +2,37 @@ import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
+import { JiraStory } from "./types";
 
 dotenv.config();
 
-/**
- * Extract formatted text from Jira ADF (preserves structure)
- */
+// ── ADF parser (unchanged from your original) ─────────────────────────────────
 function extractFormattedText(node: any): string {
-  if (!node) return '';
-
-  if (node.type === 'text') {
-    return node.text;
-  }
-
-  if (node.type === 'hardBreak') {
-    return '\n';
-  }
-
-  if (node.type === 'paragraph') {
-    return node.content?.map(extractFormattedText).join('') + '\n\n';
-  }
-
-  if (node.type === 'heading') {
-    return '\n\n' + node.content?.map(extractFormattedText).join('') + '\n';
-  }
-
-  if (node.type === 'listItem') {
-    return '- ' + node.content?.map(extractFormattedText).join('').trim() + '\n';
-  }
-
-  if (node.type === 'bulletList' || node.type === 'orderedList') {
-    return node.content?.map(extractFormattedText).join('') + '\n';
-  }
-
-  if (node.content) {
-    return node.content.map(extractFormattedText).join('');
-  }
-
-  return '';
+  if (!node) return "";
+  if (node.type === "text") return node.text;
+  if (node.type === "hardBreak") return "\n";
+  if (node.type === "paragraph")
+    return (node.content?.map(extractFormattedText).join("") ?? "") + "\n\n";
+  if (node.type === "heading")
+    return "\n\n" + (node.content?.map(extractFormattedText).join("") ?? "") + "\n";
+  if (node.type === "listItem")
+    return "- " + (node.content?.map(extractFormattedText).join("").trim() ?? "") + "\n";
+  if (node.type === "bulletList" || node.type === "orderedList")
+    return (node.content?.map(extractFormattedText).join("") ?? "") + "\n";
+  if (node.content) return node.content.map(extractFormattedText).join("");
+  return "";
 }
 
-/**
- * Split sections intelligently from extracted text
- */
+// ── Section splitter (unchanged from your original) ───────────────────────────
 function splitSections(text: string) {
-  const sections = {
-    description: '',
-    acceptance: '',
-    notes: ''
-  };
-
+  const sections = { description: "", acceptance: "", notes: "" };
   const lower = text.toLowerCase();
-
-  const accIndex = lower.indexOf('acceptance criteria');
-  const notesIndex = lower.indexOf('notes');
+  const accIndex = lower.indexOf("acceptance criteria");
+  const notesIndex = lower.indexOf("notes");
 
   if (accIndex !== -1) {
     sections.description = text.substring(0, accIndex).trim();
-
-    if (notesIndex !== -1) {
+    if (notesIndex !== -1 && notesIndex > accIndex) {
       sections.acceptance = text.substring(accIndex, notesIndex).trim();
       sections.notes = text.substring(notesIndex).trim();
     } else {
@@ -69,83 +41,89 @@ function splitSections(text: string) {
   } else {
     sections.description = text.trim();
   }
-
   return sections;
 }
 
-/**
- * Fetch Jira Issue
- */
-async function fetchJiraIssue(issueKey: string) {
+// ── Exported: fetch from Jira ─────────────────────────────────────────────────
+export async function fetchJiraIssue(issueKey: string): Promise<JiraStory> {
+  if (!process.env.JIRA_BASE_URL || !process.env.JIRA_EMAIL || !process.env.JIRA_API_TOKEN) {
+    throw new Error("Missing JIRA_BASE_URL, JIRA_EMAIL, or JIRA_API_TOKEN in .env");
+  }
+
+  console.log(`🔍 Fetching ${issueKey} from Jira...`);
+
   const response = await axios.get(
     `${process.env.JIRA_BASE_URL}/rest/api/3/issue/${issueKey}`,
     {
       auth: {
         username: process.env.JIRA_EMAIL!,
-        password: process.env.JIRA_API_TOKEN!
+        password: process.env.JIRA_API_TOKEN!,
       },
-      headers: {
-        Accept: "application/json"
-      }
+      headers: { Accept: "application/json" },
+      timeout: 15000,
     }
   );
 
-  return response.data.fields;
+  const fields = response.data.fields;
+  const fullText = extractFormattedText(fields.description);
+  const sections = splitSections(fullText);
+
+  return {
+    key: issueKey,
+    summary: fields.summary ?? "N/A",
+    description: sections.description || "No description provided",
+    acceptanceCriteria: sections.acceptance || "No acceptance criteria provided",
+    notes: sections.notes || "No notes provided",
+  };
 }
 
-/**
- * Main Execution
- */
-async function main() {
-  const issueKey = process.argv[2];
+// ── Exported: save story as markdown ─────────────────────────────────────────
+export function saveStoryMarkdown(story: JiraStory): string {
+  const outputDir = path.join(process.cwd(), "prompts");
+  if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
 
-  if (!issueKey) {
-    console.log("❌ Please provide issue key. Example: SCRUM-3");
-    process.exit(1);
-  }
-
-  try {
-    const issue = await fetchJiraIssue(issueKey);
-
-    const fullText = extractFormattedText(issue.description);
-    const sections = splitSections(fullText);
-
-    const content = `
-# Jira Story
+  const content = `# Jira Story
 
 ## Key
-${issueKey}
+${story.key}
 
 ## Summary
-${issue.summary || "N/A"}
+${story.summary}
 
 ## Description
-${sections.description || "No description provided"}
+${story.description}
 
 ## Acceptance Criteria
-${sections.acceptance || "No acceptance criteria provided"}
+${story.acceptanceCriteria}
 
 ## Notes
-${sections.notes || "No notes provided"}
+${story.notes}
 
 ---
 Generated automatically from Jira
 `;
 
-    // Ensure prompts folder exists
-    const outputDir = path.join(process.cwd(), "prompts");
-    if (!fs.existsSync(outputDir)) {
-      fs.mkdirSync(outputDir);
-    }
+  const filePath = path.join(outputDir, `${story.key}.md`);
+  fs.writeFileSync(filePath, content, "utf-8");
+  return filePath;
+}
 
-    const filePath = path.join(outputDir, `${issueKey}.md`);
+// ── CLI entry ─────────────────────────────────────────────────────────────────
+async function main() {
+  const issueKey = process.argv[2];
+  if (!issueKey) {
+    console.error("❌ Please provide issue key. Example: npx ts-node scripts/generateWithJira.ts SCRUM-5");
+    process.exit(1);
+  }
 
-    fs.writeFileSync(filePath, content);
-
+  try {
+    const story = await fetchJiraIssue(issueKey);
+    const filePath = saveStoryMarkdown(story);
     console.log(`✅ Story exported successfully → ${filePath}`);
   } catch (error: any) {
     console.error("❌ Error fetching Jira issue:");
     console.error(error.response?.data || error.message);
+    process.exit(1);
   }
 }
 
