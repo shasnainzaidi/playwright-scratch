@@ -1,12 +1,18 @@
+// scripts/generateTestCases.ts
 import fs from "fs";
 import path from "path";
 import * as readline from "readline";
-import type { TestCase, TestType } from "./types.js"; // .js required by NodeNext
+import { fileURLToPath } from "url";
+import type { TestCase, TestType } from "./types.js";
 
 export type { TestCase, TestType };
 
+const __filename = fileURLToPath(import.meta.url);
+
 // ── Step 1: Save Copilot prompt file ─────────────────────────────────────────
-function saveCopilotPrompt(issueKey: string): { promptOutputPath: string; rawOutputPath: string } {
+export function saveCopilotPrompt(
+  issueKey: string
+): { promptOutputPath: string; rawOutputPath: string } {
   const storyPath = path.join(process.cwd(), "prompts", `${issueKey}.md`);
   const promptTemplatePath = path.join(process.cwd(), "prompts", "test-generation-prompt.md");
 
@@ -56,12 +62,15 @@ Rules:
   const testcasesDir = path.join(process.cwd(), "testcases");
   if (!fs.existsSync(testcasesDir)) fs.mkdirSync(testcasesDir, { recursive: true });
 
-const rawOutputPath = path.join(testcasesDir, `${issueKey}.json`);
+  const rawOutputPath = path.join(testcasesDir, `${issueKey}-raw.json`);
   return { promptOutputPath, rawOutputPath };
 }
 
-// ── Step 2: Wait for user to save Copilot JSON output ────────────────────────
-async function waitForRawJson(rawOutputPath: string, issueKey: string): Promise<any[]> {
+// ── Step 2: Wait for user to save Copilot JSON ───────────────────────────────
+export async function waitForRawJson(
+  rawOutputPath: string,
+  issueKey: string
+): Promise<any[]> {
   const relativePath = path.relative(process.cwd(), rawOutputPath);
 
   console.log("\n┌──────────────────────────────────────────────────────────────┐");
@@ -84,8 +93,7 @@ async function waitForRawJson(rawOutputPath: string, issueKey: string): Promise<
   });
 
   if (!fs.existsSync(rawOutputPath)) {
-    console.error(`\n❌ Expected file not found: ${rawOutputPath}`);
-    console.error(`   Make sure Copilot output is saved correctly.`);
+    console.error(`\n❌ File not found: ${rawOutputPath}`);
     console.error("   Save the Copilot JSON output there and run again.");
     process.exit(1);
   }
@@ -118,7 +126,10 @@ async function waitForRawJson(rawOutputPath: string, issueKey: string): Promise<
 }
 
 // ── Step 3: Human A/M/S classification loop ──────────────────────────────────
-async function humanSelectionLoop(cases: any[], issueKey: string): Promise<TestCase[]> {
+export async function humanSelectionLoop(
+  cases: any[],
+  issueKey: string
+): Promise<TestCase[]> {
   console.log("┌──────────────────────────────────────────────────────────────┐");
   console.log("│  HUMAN REVIEW — Classify each test case                       │");
   console.log("│  A = Automated  |  M = Manual  |  S = Skip                   │");
@@ -158,7 +169,8 @@ async function humanSelectionLoop(cases: any[], issueKey: string): Promise<TestC
 
     const lower = String(tc.title ?? "").toLowerCase();
     const autoWords = ["login", "submit", "valid", "error", "redirect", "api", "register", "search", "filter"];
-    const looksAuto = autoWords.some((w) => lower.includes(w)) ||
+    const looksAuto =
+      autoWords.some((w) => lower.includes(w)) ||
       tags.some((t) => ["api", "regression", "smoke"].includes(t));
     console.log(`\n  💡 Suggestion: ${looksAuto ? "[A] Automated" : "[M] Manual"}`);
 
@@ -166,10 +178,9 @@ async function humanSelectionLoop(cases: any[], issueKey: string): Promise<TestC
       process.stdout.write("\n  Your choice [A / M / S]: ");
 
       if (!isRawMode) {
-        // Non-TTY fallback (e.g. piped input)
-        const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
-        rl.once("line", (line) => {
-          rl.close();
+        const rl2 = readline.createInterface({ input: process.stdin, output: process.stdout });
+        rl2.once("line", (line) => {
+          rl2.close();
           const k = line.trim().toLowerCase();
           resolve(k === "a" ? "automated" : k === "m" ? "manual" : "skip");
         });
@@ -178,7 +189,7 @@ async function humanSelectionLoop(cases: any[], issueKey: string): Promise<TestC
 
       const onKey = (key: string) => {
         const k = key.toLowerCase();
-        if (k === "\u0003") { process.stdout.write("\n"); process.exit(0); } // Ctrl+C
+        if (k === "\u0003") { process.stdout.write("\n"); process.exit(0); }
         if (k === "a") {
           process.stdout.write("→ Automated\n");
           process.stdin.removeListener("data", onKey);
@@ -203,7 +214,9 @@ async function humanSelectionLoop(cases: any[], issueKey: string): Promise<TestC
         id: tcId,
         title: String(tc.title ?? "Untitled"),
         type: choice,
-        priority: (["high", "medium", "low"].includes(tc.priority) ? tc.priority : "medium") as "high" | "medium" | "low",
+        priority: (["high", "medium", "low"].includes(tc.priority)
+          ? tc.priority
+          : "medium") as "high" | "medium" | "low",
         preconditions: String(tc.preconditions ?? ""),
         steps: steps.map((s: any) => ({
           step: String(s.step ?? ""),
@@ -235,34 +248,41 @@ export function saveSplitFiles(issueKey: string, cases: TestCase[]): void {
   fs.writeFileSync(path.join(dir, `${issueKey}-manual.json`), JSON.stringify(manual, null, 2), "utf-8");
   fs.writeFileSync(path.join(dir, `${issueKey}-automated.json`), JSON.stringify(automated, null, 2), "utf-8");
 
-  console.log("\n\n✅ Files saved:");
-  console.log(`   All       → testcases\\${issueKey}.json           (${cases.length} total)`);
-  console.log(`   Manual    → testcases\\${issueKey}-manual.json    (${manual.length} cases)`);
-  console.log(`   Automated → testcases\\${issueKey}-automated.json (${automated.length} cases)`);
-  console.log(`\n   Manual cases → push to Testmo:`);
+  console.log("\n✅ Files saved:");
+  console.log(`   All       → testcases\\${issueKey}.json            (${cases.length} total)`);
+  console.log(`   Manual    → testcases\\${issueKey}-manual.json     (${manual.length} cases)`);
+  console.log(`   Automated → testcases\\${issueKey}-automated.json  (${automated.length} cases)`);
+  console.log(`\n▶  Push manual to Testmo:`);
   console.log(`   npx tsx scripts/pushToTestmo.ts testcases\\${issueKey}-manual.json`);
-  console.log(`\n   Automated cases → MCP loop in Copilot Chat`);
+  console.log(`\n▶  Automated cases → paste MCP prompt in Copilot Chat`);
 }
 
-// ── CLI entry ─────────────────────────────────────────────────────────────────
-const issueKey = process.argv[2];
+// ── CLI guard — ONLY runs when this file is the direct entry point ────────────
+// When pipeline.ts imports this file, this block is completely skipped.
+// When you run `npx tsx scripts/generateTestCases.ts SCRUM-5` directly, it runs.
+const isMain = process.argv[1] &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
 
-if (!issueKey) {
-  console.error("❌ Usage: npx tsx scripts/generateTestCases.ts SCRUM-5");
-  process.exit(1);
+if (isMain) {
+  const issueKey = process.argv[2];
+
+  if (!issueKey) {
+    console.error("❌ Usage: npx tsx scripts/generateTestCases.ts SCRUM-5");
+    process.exit(1);
+  }
+
+  const { promptOutputPath, rawOutputPath } = saveCopilotPrompt(issueKey);
+  console.log(`✅ AI prompt saved → ${promptOutputPath}`);
+  console.log("👉 Open this file in VS Code and use Copilot Chat");
+  console.log("\n=== EXPECTED OUTPUT === JSON ===");
+
+  const rawCases = await waitForRawJson(rawOutputPath, issueKey);
+  const classified = await humanSelectionLoop(rawCases, issueKey);
+
+  if (classified.length === 0) {
+    console.log("\n⚠️  All test cases were skipped. Nothing saved.");
+    process.exit(0);
+  }
+
+  saveSplitFiles(issueKey, classified);
 }
-
-const { promptOutputPath, rawOutputPath } = saveCopilotPrompt(issueKey);
-console.log(`✅ AI prompt saved → ${promptOutputPath}`);
-console.log("👉 Open this file in VS Code and use Copilot Chat");
-console.log("\n=== EXPECTED OUTPUT === JSON ===");
-
-const rawCases = await waitForRawJson(rawOutputPath, issueKey);
-const classified = await humanSelectionLoop(rawCases, issueKey);
-
-if (classified.length === 0) {
-  console.log("\n⚠️  All test cases were skipped. Nothing saved.");
-  process.exit(0);
-}
-
-saveSplitFiles(issueKey, classified);

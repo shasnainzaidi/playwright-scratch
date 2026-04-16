@@ -1,0 +1,421 @@
+[
+  {
+    "id": "SCRUM-8-TC-01",
+    "title": "AC1 - Add to cart button increments cart count by one",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to product listing page",
+        "expected": "Product page loads with available products"
+      },
+      {
+        "step": "Verify initial cart count is 0",
+        "expected": "Cart badge shows 0 or is not displayed"
+      },
+      {
+        "step": "Select a single product",
+        "expected": "Product details are visible"
+      },
+      {
+        "step": "Click 'Add to Cart' button",
+        "expected": "Cart count increments to 1"
+      },
+      {
+        "step": "Verify product is added to cart",
+        "expected": "Cart icon/badge shows updated count"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-02",
+    "title": "AC1 - Add to cart increments count for multiple additions",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to product listing page",
+        "expected": "Product page loads"
+      },
+      {
+        "step": "Add first product to cart",
+        "expected": "Cart count = 1"
+      },
+      {
+        "step": "Add second different product to cart",
+        "expected": "Cart count = 2"
+      },
+      {
+        "step": "Add third product to cart",
+        "expected": "Cart count = 3"
+      },
+      {
+        "step": "Verify cart reflects total item count",
+        "expected": "Cart badge shows 3"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-03",
+    "title": "AC1 - Add same product multiple times increments cart count",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to product listing page",
+        "expected": "Product page loads"
+      },
+      {
+        "step": "Select a product and click 'Add to Cart'",
+        "expected": "Cart count = 1"
+      },
+      {
+        "step": "Add the same product to cart again",
+        "expected": "Cart count = 2"
+      },
+      {
+        "step": "Add the same product once more",
+        "expected": "Cart count = 3"
+      },
+      {
+        "step": "Verify cart reflects quantity correctly",
+        "expected": "Cart shows 3 units of same or different line items"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-04",
+    "title": "AC2 - Cart page displays correct product details",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart with known details (name, price, image)",
+        "expected": "Product added successfully"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads"
+      },
+      {
+        "step": "Verify product name is displayed correctly",
+        "expected": "Product name matches what was added"
+      },
+      {
+        "step": "Verify product price is displayed correctly",
+        "expected": "Product price matches product listing price"
+      },
+      {
+        "step": "Verify product image is displayed",
+        "expected": "Product image is visible and correct"
+      },
+      {
+        "step": "Verify product quantity is displayed",
+        "expected": "Quantity field shows correct number"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-05",
+    "title": "AC2 - Cart page shows multiple products with correct details",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add three different products to cart with distinct details",
+        "expected": "All products added successfully"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads with all items"
+      },
+      {
+        "step": "Verify all three products are listed",
+        "expected": "All products appear in cart"
+      },
+      {
+        "step": "Verify each product shows correct name, price, and image",
+        "expected": "All product details match original listings"
+      },
+      {
+        "step": "Verify subtotal calculation is correct",
+        "expected": "Subtotal = sum of (price × quantity) for all items"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-06",
+    "title": "AC3 - Quantity input is adjustable (increase quantity)",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart",
+        "expected": "Product appears in cart with quantity 1"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads"
+      },
+      {
+        "step": "Locate quantity input field for the product",
+        "expected": "Quantity input field is visible"
+      },
+      {
+        "step": "Increase quantity from 1 to 3",
+        "expected": "Quantity field shows 3"
+      },
+      {
+        "step": "Verify line item total updates",
+        "expected": "Line total = product price × 3"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total reflects new quantity"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-07",
+    "title": "AC3 - Quantity input is adjustable (decrease quantity)",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart with quantity 5",
+        "expected": "Product added with quantity 5"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page displays product with quantity 5"
+      },
+      {
+        "step": "Decrease quantity from 5 to 2",
+        "expected": "Quantity field shows 2"
+      },
+      {
+        "step": "Verify line item total updates",
+        "expected": "Line total = product price × 2"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total reflects reduced quantity"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-08",
+    "title": "AC3 - Quantity cannot be set to invalid values",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart",
+        "expected": "Product appears in cart"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads"
+      },
+      {
+        "step": "Try to set quantity to 0",
+        "expected": "System either prevents 0 or removes item from cart"
+      },
+      {
+        "step": "Try to set quantity to negative number",
+        "expected": "System prevents negative quantity entry"
+      },
+      {
+        "step": "Try to set quantity to non-numeric value",
+        "expected": "System prevents non-numeric input"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-09",
+    "title": "AC4 - Removing product from cart updates cart count and total",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add three different products to cart",
+        "expected": "Cart shows 3 items"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays all 3 products"
+      },
+      {
+        "step": "Click 'Remove' button on first product",
+        "expected": "First product disappears from cart"
+      },
+      {
+        "step": "Verify cart count decrements",
+        "expected": "Cart count now shows 2"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total reflects removal of product price"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-10",
+    "title": "AC4 - Removing all products from cart shows empty state",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a single product to cart",
+        "expected": "Cart shows 1 item"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays the product"
+      },
+      {
+        "step": "Click 'Remove' button on the product",
+        "expected": "Cart becomes empty"
+      },
+      {
+        "step": "Verify cart count shows 0",
+        "expected": "Cart badge is empty or shows 0"
+      },
+      {
+        "step": "Verify empty cart message displays",
+        "expected": "'Your cart is empty' or similar message appears"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-11",
+    "title": "AC4 - Removing product with multiple quantities updates correctly",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart with quantity 5",
+        "expected": "Cart shows 5 units"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays product with quantity 5"
+      },
+      {
+        "step": "Click 'Remove' button to remove entire product line",
+        "expected": "Entire product removed from cart"
+      },
+      {
+        "step": "Verify cart count decrements by 5",
+        "expected": "Cart count reflects removal of all 5 units"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total = 0 or adjusted for remaining items"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-12",
+    "title": "Price validation - Line item total updates with quantity changes",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add product with price $10.00 to cart with quantity 1",
+        "expected": "Line total = $10.00"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart loads with product"
+      },
+      {
+        "step": "Increase quantity to 5",
+        "expected": "Line total = $50.00"
+      },
+      {
+        "step": "Verify calculation is correct",
+        "expected": "$10.00 × 5 = $50.00"
+      },
+      {
+        "step": "Decrease quantity to 2",
+        "expected": "Line total = $20.00"
+      },
+      {
+        "step": "Verify calculation is correct",
+        "expected": "$10.00 × 2 = $20.00"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-13",
+    "title": "Price validation - Cart grand total with multiple products",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add product A ($15.00 × 2) to cart",
+        "expected": "Line total A = $30.00"
+      },
+      {
+        "step": "Add product B ($25.00 × 1) to cart",
+        "expected": "Line total B = $25.00"
+      },
+      {
+        "step": "Add product C ($10.00 × 3) to cart",
+        "expected": "Line total C = $30.00"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays all products"
+      },
+      {
+        "step": "Verify cart subtotal",
+        "expected": "Subtotal = $30.00 + $25.00 + $30.00 = $85.00"
+      },
+      {
+        "step": "Verify grand total (before tax/shipping)",
+        "expected": "Grand total accurately reflects sum of all line items"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

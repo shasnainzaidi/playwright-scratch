@@ -1,15 +1,20 @@
+// scripts/generateWithJira.ts
 import axios from "axios";
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
-import { JiraStory } from "./types";
+import { fileURLToPath } from "url";
+import type { JiraStory } from "./types.js";
 
 dotenv.config();
 
-// ── ADF parser (unchanged from your original) ─────────────────────────────────
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// ── ADF parser ────────────────────────────────────────────────────────────────
 function extractFormattedText(node: any): string {
   if (!node) return "";
-  if (node.type === "text") return node.text;
+  if (node.type === "text") return node.text ?? "";
   if (node.type === "hardBreak") return "\n";
   if (node.type === "paragraph")
     return (node.content?.map(extractFormattedText).join("") ?? "") + "\n\n";
@@ -23,7 +28,7 @@ function extractFormattedText(node: any): string {
   return "";
 }
 
-// ── Section splitter (unchanged from your original) ───────────────────────────
+// ── Section splitter ──────────────────────────────────────────────────────────
 function splitSections(text: string) {
   const sections = { description: "", acceptance: "", notes: "" };
   const lower = text.toLowerCase();
@@ -44,7 +49,7 @@ function splitSections(text: string) {
   return sections;
 }
 
-// ── Exported: fetch from Jira ─────────────────────────────────────────────────
+// ── Exported: fetch story from Jira ──────────────────────────────────────────
 export async function fetchJiraIssue(issueKey: string): Promise<JiraStory> {
   if (!process.env.JIRA_BASE_URL || !process.env.JIRA_EMAIL || !process.env.JIRA_API_TOKEN) {
     throw new Error("Missing JIRA_BASE_URL, JIRA_EMAIL, or JIRA_API_TOKEN in .env");
@@ -77,7 +82,7 @@ export async function fetchJiraIssue(issueKey: string): Promise<JiraStory> {
   };
 }
 
-// ── Exported: save story as markdown ─────────────────────────────────────────
+// ── Exported: save story to markdown ─────────────────────────────────────────
 export function saveStoryMarkdown(story: JiraStory): string {
   const outputDir = path.join(process.cwd(), "prompts");
   if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir, { recursive: true });
@@ -108,14 +113,19 @@ Generated automatically from Jira
   return filePath;
 }
 
-// ── CLI entry ─────────────────────────────────────────────────────────────────
-async function main() {
+// ── CLI guard — only runs when this file is the entry point ──────────────────
+// import.meta.url is the URL of THIS file.
+// process.argv[1] is the path of the file Node was asked to run.
+// They match only when you run this file directly, not when it is imported.
+const isMain = process.argv[1] &&
+  fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
+
+if (isMain) {
   const issueKey = process.argv[2];
   if (!issueKey) {
-    console.error("❌ Please provide issue key. Example: npx ts-node scripts/generateWithJira.ts SCRUM-5");
+    console.error("❌ Usage: npx tsx scripts/generateWithJira.ts SCRUM-5");
     process.exit(1);
   }
-
   try {
     const story = await fetchJiraIssue(issueKey);
     const filePath = saveStoryMarkdown(story);
@@ -126,5 +136,3 @@ async function main() {
     process.exit(1);
   }
 }
-
-main();

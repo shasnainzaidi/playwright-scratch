@@ -1,6 +1,6 @@
-// types.ts
-// Shared types for the entire pipeline.
-// All scripts import from here — no circular dependencies.
+// scripts/types.ts
+// Single source of truth for all shared types.
+// Every script imports from here — no circular dependencies.
 
 export interface JiraStory {
   key: string;

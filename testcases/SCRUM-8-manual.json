@@ -1,0 +1,165 @@
+[
+  {
+    "id": "SCRUM-8-TC-02",
+    "title": "AC1 - Add to cart increments count for multiple additions",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to product listing page",
+        "expected": "Product page loads"
+      },
+      {
+        "step": "Add first product to cart",
+        "expected": "Cart count = 1"
+      },
+      {
+        "step": "Add second different product to cart",
+        "expected": "Cart count = 2"
+      },
+      {
+        "step": "Add third product to cart",
+        "expected": "Cart count = 3"
+      },
+      {
+        "step": "Verify cart reflects total item count",
+        "expected": "Cart badge shows 3"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-04",
+    "title": "AC2 - Cart page displays correct product details",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart with known details (name, price, image)",
+        "expected": "Product added successfully"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads"
+      },
+      {
+        "step": "Verify product name is displayed correctly",
+        "expected": "Product name matches what was added"
+      },
+      {
+        "step": "Verify product price is displayed correctly",
+        "expected": "Product price matches product listing price"
+      },
+      {
+        "step": "Verify product image is displayed",
+        "expected": "Product image is visible and correct"
+      },
+      {
+        "step": "Verify product quantity is displayed",
+        "expected": "Quantity field shows correct number"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-06",
+    "title": "AC3 - Quantity input is adjustable (increase quantity)",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart",
+        "expected": "Product appears in cart with quantity 1"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart page loads"
+      },
+      {
+        "step": "Locate quantity input field for the product",
+        "expected": "Quantity input field is visible"
+      },
+      {
+        "step": "Increase quantity from 1 to 3",
+        "expected": "Quantity field shows 3"
+      },
+      {
+        "step": "Verify line item total updates",
+        "expected": "Line total = product price × 3"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total reflects new quantity"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-10",
+    "title": "AC4 - Removing all products from cart shows empty state",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a single product to cart",
+        "expected": "Cart shows 1 item"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays the product"
+      },
+      {
+        "step": "Click 'Remove' button on the product",
+        "expected": "Cart becomes empty"
+      },
+      {
+        "step": "Verify cart count shows 0",
+        "expected": "Cart badge is empty or shows 0"
+      },
+      {
+        "step": "Verify empty cart message displays",
+        "expected": "'Your cart is empty' or similar message appears"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-8-TC-11",
+    "title": "AC4 - Removing product with multiple quantities updates correctly",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Add a product to cart with quantity 5",
+        "expected": "Cart shows 5 units"
+      },
+      {
+        "step": "Navigate to cart page",
+        "expected": "Cart displays product with quantity 5"
+      },
+      {
+        "step": "Click 'Remove' button to remove entire product line",
+        "expected": "Entire product removed from cart"
+      },
+      {
+        "step": "Verify cart count decrements by 5",
+        "expected": "Cart count reflects removal of all 5 units"
+      },
+      {
+        "step": "Verify cart total updates",
+        "expected": "Cart total = 0 or adjusted for remaining items"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

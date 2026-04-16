@@ -1,16 +1,28 @@
+// scripts/pipeline.ts
+// Runs the full QA pipeline end-to-end by importing and calling the other
+// scripts' exported functions directly — no child processes, no spawning.
+//
+// Usage:
+//   npx tsx scripts/pipeline.ts SCRUM-5
+//   npx tsx scripts/pipeline.ts SCRUM-5 --skip-testmo
+
 import dotenv from "dotenv";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import { spawnSync } from "child_process";
-import { fetchJiraIssue, saveStoryMarkdown } from "./generateWithJira.js"; // .js required
-import { pushManualCases } from "./pushToTestmo.js";                        // .js required
+import { fetchJiraIssue, saveStoryMarkdown } from "./generateWithJira.js";
+import {
+  saveCopilotPrompt,
+  waitForRawJson,
+  humanSelectionLoop,
+  saveSplitFiles,
+} from "./generateTestCases.js";
+import { pushManualCases } from "./pushToTestmo.js";
 import type { TestCase } from "./types.js";
 
 dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // ── CLI args ──────────────────────────────────────────────────────────────────
 const issueKey = process.argv[2];
@@ -19,7 +31,7 @@ const skipTestmo = process.argv.includes("--skip-testmo");
 function stepHeader(n: number, label: string) {
   console.log(`\n${"═".repeat(60)}`);
   console.log(`  Step ${n}: ${label}`);
-  console.log("═".repeat(60));
+  console.log(`${"═".repeat(60)}`);
 }
 
 if (!issueKey) {
@@ -28,10 +40,11 @@ if (!issueKey) {
 }
 
 console.log(`\n🚀 QA Pipeline — ${issueKey}`);
-console.log(`   Skip Testmo: ${skipTestmo}`);
+console.log(`   Skip Testmo push: ${skipTestmo}`);
 
-// ── Step 1: Fetch Jira ────────────────────────────────────────────────────────
+// ── Step 1: Fetch Jira story ──────────────────────────────────────────────────
 stepHeader(1, "Fetch Jira story");
+
 try {
   const story = await fetchJiraIssue(issueKey);
   const mdPath = saveStoryMarkdown(story);
@@ -42,84 +55,68 @@ try {
   process.exit(1);
 }
 
-// ── Step 2: Generate & classify test cases ────────────────────────────────────
-// Runs generateTestCases.ts as a child process with inherited stdio so the
-// interactive A/M/S keypress loop owns stdin cleanly.
-stepHeader(2, "Generate & classify test cases (Copilot + human review)");
+// ── Step 2: Save Copilot prompt ───────────────────────────────────────────────
+stepHeader(2, "Generate test cases (Copilot + human review)");
 
-const generateScript = path.join(__dirname, "generateTestCases.ts");
-const result = spawnSync("npx", ["tsx", generateScript, issueKey], {
-  stdio: "inherit",
-  shell: true,
-  cwd: process.cwd(),
-});
+const { promptOutputPath, rawOutputPath } = saveCopilotPrompt(issueKey);
+console.log(`✅ AI prompt saved → ${promptOutputPath}`);
+console.log("👉 Open this file in VS Code and use Copilot Chat");
 
-if (result.status !== 0) {
-  console.error("❌ Test case generation failed or was cancelled.");
-  process.exit(1);
+// ── Step 3: Wait for Copilot JSON, then human classify ───────────────────────
+const rawCases = await waitForRawJson(rawOutputPath, issueKey);
+const classified = await humanSelectionLoop(rawCases, issueKey);
+
+if (classified.length === 0) {
+  console.log("\n⚠️  All test cases were skipped. Exiting.");
+  process.exit(0);
 }
 
-// ── Step 3: Push manual cases to Testmo ──────────────────────────────────────
+saveSplitFiles(issueKey, classified);
+
+// ── Step 4: Push manual cases to Testmo ──────────────────────────────────────
 const manualPath = path.join(process.cwd(), "testcases", `${issueKey}-manual.json`);
+const manualCases: TestCase[] = classified.filter((tc) => tc.type === "manual");
 
 if (skipTestmo) {
-  stepHeader(3, "Push to Testmo [SKIPPED]");
+  stepHeader(4, "Push to Testmo [SKIPPED — --skip-testmo flag]");
   console.log(`   Run manually: npx tsx scripts/pushToTestmo.ts testcases\\${issueKey}-manual.json`);
 } else {
-  stepHeader(3, "Push manual cases to Testmo");
+  stepHeader(4, "Push manual cases to Testmo");
 
-  if (!fs.existsSync(manualPath)) {
-    console.warn(`⚠️  No manual cases file at ${manualPath} — nothing to push.`);
+  if (manualCases.length === 0) {
+    console.log("ℹ️  No manual cases to push.");
   } else {
-    let manualCases: TestCase[] = [];
     try {
-      const parsed = JSON.parse(fs.readFileSync(manualPath, "utf-8"));
-      manualCases = Array.isArray(parsed) ? parsed : [];
-    } catch {
-      console.error("❌ Could not parse manual cases JSON.");
-      process.exit(1);
-    }
-
-    if (manualCases.length === 0) {
-      console.log("ℹ️  0 manual cases — nothing to push.");
-    } else {
-      try {
-        await pushManualCases(manualCases);
-      } catch (err: any) {
-        console.warn("⚠️  Testmo push failed (non-fatal):", err.message);
-        console.warn(`   Retry: npx tsx scripts/pushToTestmo.ts testcases\\${issueKey}-manual.json`);
-      }
+      await pushManualCases(manualCases);
+    } catch (err: any) {
+      console.warn("⚠️  Testmo push failed (non-fatal):", err.message);
+      console.warn(`   Retry: npx tsx scripts/pushToTestmo.ts testcases\\${issueKey}-manual.json`);
     }
   }
 }
 
-// ── Step 4: MCP instructions ──────────────────────────────────────────────────
-stepHeader(4, "MCP self-healing loop — next action");
+// ── Step 5: MCP instructions ──────────────────────────────────────────────────
+stepHeader(5, "MCP self-healing loop — paste this into Copilot Chat");
 
-const automatedPath = path.join(process.cwd(), "testcases", `${issueKey}-automated.json`);
-let automatedCount = 0;
-if (fs.existsSync(automatedPath)) {
-  try {
-    automatedCount = JSON.parse(fs.readFileSync(automatedPath, "utf-8")).length;
-  } catch { /* ignore */ }
-}
+const automatedCases = classified.filter((tc) => tc.type === "automated");
 
-if (automatedCount === 0) {
+if (automatedCases.length === 0) {
   console.log("ℹ️  No automated cases — MCP loop not needed.");
 } else {
   console.log(`
-  Paste this into Copilot Chat (playwright-qa-mcp must be running):
+  playwright-qa-mcp must be running. Then paste this prompt:
   ┌─────────────────────────────────────────────────────────────┐
   │  Using playwright-qa-mcp tools:                              │
   │                                                              │
-  │  1. Read testcases\\${issueKey}-automated.json with read_file│
+  │  1. Read testcases\\${issueKey}-automated.json               │
+  │     using the read_file tool                                 │
   │  2. Run generate_playwright_script for ${issueKey}           │
-  │  3. Run the tests with run_playwright_tests                  │
+  │  3. Run tests with run_playwright_tests                      │
   │  4. If PASS → report done and summarise                      │
   │  5. If FAIL:                                                 │
-  │     a. Read the file with read_file                          │
-  │     b. Fix only what is broken                               │
-  │     c. Write the full fixed file with write_file             │
+  │     a. Read failing file with read_file                      │
+  │     b. Fix only the broken part                              │
+  │     c. Write full fixed file with write_file                 │
   │     d. Run tests again                                       │
   │  6. Repeat until all pass (max 5 iterations)                 │
   │  7. Summarise all changes made                               │
@@ -127,8 +124,9 @@ if (automatedCount === 0) {
 `);
 }
 
+// ── Summary ───────────────────────────────────────────────────────────────────
 console.log("🏁 Pipeline complete.\n");
-console.log("   Files created:");
+console.log("   Files created this run:");
 console.log(`   • prompts\\${issueKey}.md`);
 console.log(`   • prompts\\${issueKey}-ai-input.md`);
 console.log(`   • testcases\\${issueKey}.json`);
