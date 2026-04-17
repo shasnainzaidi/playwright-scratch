@@ -17,23 +17,49 @@ const PROJECT_ID = Number(process.env.TESTMO_PROJECT_ID ?? "1");
 const GROUP_ID = Number(process.env.TESTMO_GROUP_ID ?? "1");
 const REPOSITORY_ID = Number(process.env.TESTMO_REPOSITORY_ID ?? "1");
 
+// Testmo "Case (text)" template priority values (must match exactly what Testmo expects)
 const PRIORITY_MAP: Record<string, number> = {
-  high: 2,
-  medium: 3,
-  low: 4,
+  high: 1,
+  medium: 2,
+  low: 3,
 };
+
+// Builds a numbered plain-text list from steps for the Description field.
+// Example output:
+//   1. Navigate to the login page
+//   2. Enter a valid email address
+//   3. Enter a valid password
+//   4. Click the Login button
+function buildDescription(tc: TestCase): string {
+  if (!tc.steps || tc.steps.length === 0) return "No steps defined.";
+  return tc.steps
+    .map((s, i) => `${i + 1}. ${String(s.step || "Step not defined")}`)
+    .join("\n");
+}
+
+// Builds a numbered plain-text list from expected results for the Expected field.
+// Example output:
+//   1. Login page is displayed
+//   2. Email field accepts input
+//   3. Password field accepts input
+//   4. User is redirected to the dashboard
+function buildExpected(tc: TestCase): string {
+  if (!tc.steps || tc.steps.length === 0) return "No expected results defined.";
+  return tc.steps
+    .map((s, i) => `${i + 1}. ${String(s.expected || "Expected result")}`)
+    .join("\n");
+}
 
 function formatForTestmo(tc: TestCase) {
   return {
     name: String(tc.title),
     repository_id: REPOSITORY_ID,
     group_id: GROUP_ID,
-    priority: PRIORITY_MAP[tc.priority] ?? 3,
-    steps:
-      tc.steps?.map((s) => ({
-        content: String(s.step || "Step not defined"),
-        expected: String(s.expected || "Expected result"),
-      })) ?? [{ content: "Step not defined", expected: "Expected result" }],
+    // custom_ prefix required by Testmo API. These are TOP-LEVEL keys, not nested.
+    // System names must match exactly what is set in Testmo Admin > Fields.
+    custom_priority: PRIORITY_MAP[tc.priority] ?? 2,
+    custom_description: buildDescription(tc),   // fills the Description field
+    custom_expected: buildExpected(tc),         // fills the Expected field
   };
 }
 
