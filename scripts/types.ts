@@ -1,6 +1,3 @@
-// scripts/types.ts
-// Single source of truth for all shared types.
-// Every script imports from here — no circular dependencies.
 
 export interface JiraStory {
   key: string;
@@ -21,7 +18,7 @@ export interface TestCase {
   id: string;
   title: string;
   type: TestType;
-  priority: "high" | "medium" | "low";
+  priority: "high" | "normal" | "low";
   preconditions?: string;
   steps: TestStep[];
   tags?: string[];

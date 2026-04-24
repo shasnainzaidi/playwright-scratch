@@ -1,0 +1,179 @@
+[
+  {
+    "id": "SCRUM-7-TC-01",
+    "title": "AC1 - Search box accepts text input",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Click on search box",
+        "expected": "Search box is focused and ready for input"
+      },
+      {
+        "step": "Type text into search box",
+        "expected": "Text is entered and displayed in search box"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-02",
+    "title": "AC2 - Search returns relevant results for valid query",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Enter search keyword 'Dress' in search box",
+        "expected": "Keyword is entered in search box"
+      },
+      {
+        "step": "Press Enter or click Search button",
+        "expected": "Search is executed"
+      },
+      {
+        "step": "Verify search results page displays",
+        "expected": "Results page shows products containing 'Dress' keyword"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-03",
+    "title": "AC3 - No result shows 'No products found' message",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Enter non-existent search keyword 'asdfgh' in search box",
+        "expected": "Keyword is entered in search box"
+      },
+      {
+        "step": "Press Enter or click Search button",
+        "expected": "Search is executed"
+      },
+      {
+        "step": "Verify results page displays",
+        "expected": "'No products found' message is displayed"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-04",
+    "title": "AC4 - Search results are clickable and navigate to product detail pages",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Perform a valid search that returns results",
+        "expected": "Search results are displayed"
+      },
+      {
+        "step": "Click on a product result",
+        "expected": "Product detail page loads for the selected product"
+      },
+      {
+        "step": "Verify product information is displayed",
+        "expected": "Product details page shows name, price, description, and other relevant information"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-05",
+    "title": "Negative - Empty search behavior",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Leave search box empty",
+        "expected": "Search box remains empty"
+      },
+      {
+        "step": "Press Enter or click Search button",
+        "expected": "System displays default behavior (either shows all products, error message, or no action)"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-06",
+    "title": "Case sensitivity - Search with different cases returns same results",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Search for 'dress' (lowercase)",
+        "expected": "Search results are displayed"
+      },
+      {
+        "step": "Note the number of results",
+        "expected": "Results count is recorded"
+      },
+      {
+        "step": "Search for 'DRESS' (uppercase)",
+        "expected": "Search results are displayed"
+      },
+      {
+        "step": "Verify results count is the same",
+        "expected": "Case-insensitive search returns same results"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-07",
+    "title": "Partial match - Search finds products with partial keyword match",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Search for partial keyword 'dre'",
+        "expected": "Search is executed"
+      },
+      {
+        "step": "Verify search results page displays",
+        "expected": "Results show products containing partial match (e.g., 'Dress', 'Dresses', etc.)"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

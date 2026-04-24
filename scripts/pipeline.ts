@@ -1,10 +1,4 @@
-// scripts/pipeline.ts
-// Runs the full QA pipeline end-to-end by importing and calling the other
-// scripts' exported functions directly — no child processes, no spawning.
-//
-// Usage:
-//   npx tsx scripts/pipeline.ts SCRUM-5
-//   npx tsx scripts/pipeline.ts SCRUM-5 --skip-testmo
+
 
 import dotenv from "dotenv";
 import fs from "fs";
@@ -110,7 +104,10 @@ if (automatedCases.length === 0) {
   │                                                              │
   │  1. Read testcases\\${issueKey}-automated.json               │
   │     using the read_file tool                                 │
-  │  2. Run generate_playwright_script for ${issueKey}           │
+  │  2. Run generate_playwright_script for ${issueKey} and write
+        automated test scripts inside stage folder of tests and 
+        follow the current test pattern and practice used in 
+        other test scripts of same folder                        │
   │  3. Run tests with run_playwright_tests                      │
   │  4. If PASS → report done and summarise                      │
   │  5. If FAIL:                                                 │

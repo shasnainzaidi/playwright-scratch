@@ -1,0 +1,198 @@
+[
+  {
+    "id": "SCRUM-6-TC-01",
+    "title": "AC1 - Contact form displays Name, Email, Subject, Message fields",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to the homepage",
+        "expected": "Homepage is loaded"
+      },
+      {
+        "step": "Click on 'Contact Us' link or navigate to contact page",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Verify contact form contains all required fields",
+        "expected": "Form displays Name, Email, Subject, and Message input fields"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-02",
+    "title": "AC2 - Required fields show validation errors when empty",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Leave all required fields blank (Name, Email, Subject, Message)",
+        "expected": "All fields are empty"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Validation errors appear for each empty required field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-03",
+    "title": "AC2 - Name field validation error when empty",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Leave Name field blank and fill other required fields",
+        "expected": "Name field is empty, other fields have values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Validation error appears for Name field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-04",
+    "title": "AC2 - Email field validation error when empty",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Leave Email field blank and fill other required fields",
+        "expected": "Email field is empty, other fields have values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Validation error appears for Email field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-05",
+    "title": "AC2 - Subject field validation error when empty",
+    "type": "automated",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Leave Subject field blank and fill other required fields",
+        "expected": "Subject field is empty, other fields have values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Validation error appears for Subject field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-06",
+    "title": "AC2 - Message field validation error when empty",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Leave Message field blank and fill other required fields",
+        "expected": "Message field is empty, other fields have values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Validation error appears for Message field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-07",
+    "title": "AC3 - Successful submission shows confirmation message",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Fill all required fields with valid data",
+        "expected": "All fields (Name, Email, Subject, Message) contain valid values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Form is submitted to backend"
+      },
+      {
+        "step": "Verify success confirmation message is displayed",
+        "expected": "Success message appears confirming form submission"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-6-TC-09",
+    "title": "Negative - Backend failure error handling",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to contact form",
+        "expected": "Contact form page is displayed"
+      },
+      {
+        "step": "Fill all required fields with valid data",
+        "expected": "All fields contain valid values"
+      },
+      {
+        "step": "Click Submit button",
+        "expected": "Form is submitted to backend"
+      },
+      {
+        "step": "Simulate or wait for backend failure",
+        "expected": "Backend processing fails"
+      },
+      {
+        "step": "Verify error message is displayed to user",
+        "expected": "Backend error message is shown to user"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

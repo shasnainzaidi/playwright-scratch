@@ -1,0 +1,52 @@
+[
+  {
+    "id": "SCRUM-7-TC-03",
+    "title": "AC3 - No result shows 'No products found' message",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Enter non-existent search keyword 'asdfgh' in search box",
+        "expected": "Keyword is entered in search box"
+      },
+      {
+        "step": "Press Enter or click Search button",
+        "expected": "Search is executed"
+      },
+      {
+        "step": "Verify results page displays",
+        "expected": "'No products found' message is displayed"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-7-TC-07",
+    "title": "Partial match - Search finds products with partial keyword match",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to homepage",
+        "expected": "Homepage loads with search box visible"
+      },
+      {
+        "step": "Search for partial keyword 'dre'",
+        "expected": "Search is executed"
+      },
+      {
+        "step": "Verify search results page displays",
+        "expected": "Results show products containing partial match (e.g., 'Dress', 'Dresses', etc.)"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]

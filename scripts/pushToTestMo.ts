@@ -1,4 +1,3 @@
-// scripts/pushToTestmo.ts
 import axios from "axios";
 import type { AxiosError } from "axios";
 import dotenv from "dotenv";
@@ -20,7 +19,7 @@ const REPOSITORY_ID = Number(process.env.TESTMO_REPOSITORY_ID ?? "1");
 // Testmo "Case (text)" template priority values (must match exactly what Testmo expects)
 const PRIORITY_MAP: Record<string, number> = {
   high: 1,
-  medium: 2,
+  normal: 2,
   low: 3,
 };
 

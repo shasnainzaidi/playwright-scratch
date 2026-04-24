@@ -1,0 +1,83 @@
+[
+  {
+    "id": "SCRUM-5-TC-03",
+    "title": "AC3 - Invalid credentials show error message",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to Signup/Login page",
+        "expected": "Login form is displayed"
+      },
+      {
+        "step": "Enter registered email address",
+        "expected": "Email is entered in the email field"
+      },
+      {
+        "step": "Enter incorrect password",
+        "expected": "Password is entered in the password field"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "Error message 'Incorrect credentials' or similar is displayed"
+      },
+      {
+        "step": "Verify user is not logged in",
+        "expected": "User remains on login page, not redirected"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-5-TC-05",
+    "title": "AC4 - Empty password field shows validation warning",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to Signup/Login page",
+        "expected": "Login form is displayed"
+      },
+      {
+        "step": "Enter email address",
+        "expected": "Email is entered in the email field"
+      },
+      {
+        "step": "Leave password field blank",
+        "expected": "Password field is empty"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "Validation error message appears for password field"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  },
+  {
+    "id": "SCRUM-5-TC-06",
+    "title": "AC4 - Both empty fields show validation warnings",
+    "type": "manual",
+    "priority": "medium",
+    "preconditions": "",
+    "steps": [
+      {
+        "step": "Navigate to Signup/Login page",
+        "expected": "Login form is displayed"
+      },
+      {
+        "step": "Leave both email and password fields blank",
+        "expected": "Both fields are empty"
+      },
+      {
+        "step": "Click Login button",
+        "expected": "Validation error messages appear for both email and password fields"
+      }
+    ],
+    "tags": [],
+    "automationNotes": ""
+  }
+]
