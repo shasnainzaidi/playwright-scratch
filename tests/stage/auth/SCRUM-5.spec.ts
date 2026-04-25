@@ -24,8 +24,8 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Enter valid registered user email and password
-    const email = process.env.USER_EMAIL!;
-    const password = process.env.USER_PASSWORD!;
+    const email = process.env.USER_EMAIL || process.env.VALID_LOGIN_EMAIL || 'test@automationexercise.com';
+    const password = process.env.USER_PASSWORD || process.env.VALID_LOGIN_PASSWORD || 'Test123';
     
     await loginPage.login(email, password);
     await page.waitForLoadState('networkidle');
@@ -49,8 +49,8 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Enter valid email and password
-    const email = process.env.USER_EMAIL!;
-    const password = process.env.USER_PASSWORD!;
+    const email = process.env.USER_EMAIL || process.env.VALID_LOGIN_EMAIL || 'test@automationexercise.com';
+    const password = process.env.USER_PASSWORD || process.env.VALID_LOGIN_PASSWORD || 'Test123';
     
     await loginPage.login(email, password);
     await page.waitForLoadState('networkidle');
@@ -67,7 +67,7 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Enter email with incorrect password
-    const email = process.env.USER_EMAIL!;
+    const email = process.env.USER_EMAIL || process.env.VALID_LOGIN_EMAIL || 'test@automationexercise.com';
     
     await loginPage.emailInput.fill(email);
     await loginPage.passwordInput.fill('WrongPassword123!');
@@ -91,7 +91,7 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Leave email field empty and enter password only
-    const password = process.env.USER_PASSWORD!;
+    const password = process.env.USER_PASSWORD || process.env.VALID_LOGIN_PASSWORD || 'Test123';
     await loginPage.passwordInput.fill(password);
     
     // Try to submit with empty email
@@ -111,7 +111,7 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Enter valid email but leave password field empty
-    const email = process.env.USER_EMAIL!;
+    const email = process.env.USER_EMAIL || process.env.VALID_LOGIN_EMAIL || 'test@automationexercise.com';
     await loginPage.emailInput.fill(email);
     
     // Try to submit with empty password
@@ -149,7 +149,7 @@ test.describe('SCRUM-5: User Login Functionality', () => {
     await loginPage.goto();
     
     // Leave email field empty but enter valid password
-    const password = process.env.USER_PASSWORD!;
+    const password = process.env.USER_PASSWORD || process.env.VALID_LOGIN_PASSWORD || 'Test123';
     await loginPage.passwordInput.fill(password);
     
     // Try to submit with empty email
