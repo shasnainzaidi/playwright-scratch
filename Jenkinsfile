@@ -66,8 +66,6 @@ pipeline {
         // Avoids race conditions on shared test data
         disableConcurrentBuilds()
 
-        // Show ANSI colours in Jenkins console (requires AnsiColor plugin)
-        ansiColor('xterm')
     }
 
     // ── Trigger — rebuild on every push to GitHub ────────────────────────────
