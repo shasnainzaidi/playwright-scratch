@@ -81,6 +81,15 @@ export default defineConfig({
       },
     },
 
+    // ✅ API TESTS PROJECT
+    {
+      name: 'api',
+      testDir: './tests/api',
+      use: {
+        baseURL: process.env.AE_URL || 'https://automationexercise.com',
+      },
+    },
+
   ]
 
 });
