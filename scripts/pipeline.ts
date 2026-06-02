@@ -18,7 +18,6 @@ dotenv.config();
 
 const __filename = fileURLToPath(import.meta.url);
 
-// ── CLI args ──────────────────────────────────────────────────────────────────
 const issueKey = process.argv[2];
 const skipTestmo = process.argv.includes("--skip-testmo");
 
@@ -36,7 +35,6 @@ if (!issueKey) {
 console.log(`\n🚀 QA Pipeline — ${issueKey}`);
 console.log(`   Skip Testmo push: ${skipTestmo}`);
 
-// ── Step 1: Fetch Jira story ──────────────────────────────────────────────────
 stepHeader(1, "Fetch Jira story");
 
 try {
@@ -48,15 +46,18 @@ try {
   console.error("❌ Jira fetch failed:", err.response?.data || err.message);
   process.exit(1);
 }
+const skipJira = process.argv.includes("--skip-jira");
+if (!skipJira) {
+  const story = await fetchJiraIssue(issueKey);
+  saveStoryMarkdown(story);
+}
 
-// ── Step 2: Save Copilot prompt ───────────────────────────────────────────────
 stepHeader(2, "Generate test cases (Copilot + human review)");
 
 const { promptOutputPath, rawOutputPath } = saveCopilotPrompt(issueKey);
 console.log(`✅ AI prompt saved → ${promptOutputPath}`);
 console.log("👉 Open this file in VS Code and use Copilot Chat");
 
-// ── Step 3: Wait for Copilot JSON, then human classify ───────────────────────
 const rawCases = await waitForRawJson(rawOutputPath, issueKey);
 const classified = await humanSelectionLoop(rawCases, issueKey);
 
@@ -67,7 +68,6 @@ if (classified.length === 0) {
 
 saveSplitFiles(issueKey, classified);
 
-// ── Step 4: Push manual cases to Testmo ──────────────────────────────────────
 const manualPath = path.join(process.cwd(), "testcases", `${issueKey}-manual.json`);
 const manualCases: TestCase[] = classified.filter((tc) => tc.type === "manual");
 
@@ -89,7 +89,6 @@ if (skipTestmo) {
   }
 }
 
-// ── Step 5: MCP instructions ──────────────────────────────────────────────────
 stepHeader(5, "MCP self-healing loop — paste this into Copilot Chat");
 
 const automatedCases = classified.filter((tc) => tc.type === "automated");

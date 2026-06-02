@@ -1,7 +1,3 @@
-/**
- * Test Data for SCRUM-4: User Registration
- * Used by automated tests in tests/stage/auth/signup.spec.ts
- */
 
 export interface SignupData {
   name: string;
@@ -23,9 +19,7 @@ export interface AccountDetailsData {
   mobile: string;
 }
 
-/**
- * Valid test data for successful signup flows
- */
+
 export const validSignupData = {
   standard: {
     signup: {

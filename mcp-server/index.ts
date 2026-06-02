@@ -1,18 +1,3 @@
-/**
- * mcp-server/index.ts
- *
- * MCP server that gives Copilot/Claude tools to:
- *   1. Run Playwright tests
- *   2. Read test files
- *   3. Write (fix) test files
- *   4. Generate Playwright scripts from test case JSON
- *   5. List available test files
- *
- * Register in .vscode/mcp.json or use with Claude Desktop.
- *
- * Start: npx ts-node mcp-server/index.ts
- */
-
 import { Server } from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import {
@@ -26,14 +11,12 @@ import { promisify } from "util";
 
 const execAsync = promisify(exec);
 
-// ── Server init ───────────────────────────────────────────────────────────────
 
 const server = new Server(
   { name: "playwright-qa-mcp", version: "2.0.0" },
   { capabilities: { tools: {} } }
 );
 
-// ── Tool definitions ──────────────────────────────────────────────────────────
 
 server.setRequestHandler(ListToolsRequestSchema, async () => ({
   tools: [
@@ -144,7 +127,6 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
     }
   }
 
-  // ── read_file ─────────────────────────────────────────────────────────────
   if (name === "read_file") {
     const filePath = String(args.path);
     if (!existsSync(filePath)) {
@@ -154,14 +136,12 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
     return { content: [{ type: "text", text: content }] };
   }
 
-  // ── write_file ────────────────────────────────────────────────────────────
   if (name === "write_file") {
     const filePath = String(args.path);
     writeFileSync(filePath, String(args.content), "utf-8");
     return { content: [{ type: "text", text: `✅ File written: ${filePath}` }] };
   }
 
-  // ── list_test_files ───────────────────────────────────────────────────────
   if (name === "list_test_files") {
     const testsDir = path.join(process.cwd(), "tests");
     if (!existsSync(testsDir)) {
@@ -174,7 +154,6 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
     return { content: [{ type: "text", text }] };
   }
 
-  // ── generate_playwright_script ────────────────────────────────────────────
   if (name === "generate_playwright_script") {
     const storyKey = String(args.storyKey);
     const baseUrl = String(args.baseUrl ?? process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3000");
@@ -199,7 +178,6 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
     return { content: [{ type: "text", text: `✅ Playwright script generated → ${outPath}\n\nContent:\n${script}` }] };
   }
 
-  // ── read_test_results ─────────────────────────────────────────────────────
   if (name === "read_test_results") {
     const resultsPath = path.join(process.cwd(), "playwright-report", "results.json");
     if (!existsSync(resultsPath)) {
@@ -227,7 +205,6 @@ server.setRequestHandler(CallToolRequestSchema, async (req) => {
   return { content: [{ type: "text", text: `❌ Unknown tool: ${name}` }], isError: true };
 });
 
-// ── Playwright script builder ─────────────────────────────────────────────────
 
 function buildPlaywrightScript(storyKey: string, baseUrl: string, cases: any[]): string {
   const blocks = cases.map((tc: any) => {
@@ -275,7 +252,6 @@ ${blocks.join("\n\n")}
 `;
 }
 
-// ── Start server ──────────────────────────────────────────────────────────────
 
 const transport = new StdioServerTransport();
 server.connect(transport).then(() => {

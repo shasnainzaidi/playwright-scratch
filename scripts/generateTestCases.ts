@@ -1,4 +1,3 @@
-// scripts/generateTestCases.ts
 import fs from "fs";
 import path from "path";
 import * as readline from "readline";

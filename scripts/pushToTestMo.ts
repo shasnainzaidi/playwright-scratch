@@ -16,32 +16,19 @@ const PROJECT_ID = Number(process.env.TESTMO_PROJECT_ID ?? "1");
 const GROUP_ID = Number(process.env.TESTMO_GROUP_ID ?? "1");
 const REPOSITORY_ID = Number(process.env.TESTMO_REPOSITORY_ID ?? "1");
 
-// Testmo "Case (text)" template priority values (must match exactly what Testmo expects)
+
 const PRIORITY_MAP: Record<string, number> = {
   high: 1,
   normal: 2,
   low: 3,
 };
 
-// Builds a numbered plain-text list from steps for the Description field.
-// Example output:
-//   1. Navigate to the login page
-//   2. Enter a valid email address
-//   3. Enter a valid password
-//   4. Click the Login button
 function buildDescription(tc: TestCase): string {
   if (!tc.steps || tc.steps.length === 0) return "No steps defined.";
   return tc.steps
     .map((s, i) => `${i + 1}. ${String(s.step || "Step not defined")}`)
     .join("\n");
 }
-
-// Builds a numbered plain-text list from expected results for the Expected field.
-// Example output:
-//   1. Login page is displayed
-//   2. Email field accepts input
-//   3. Password field accepts input
-//   4. User is redirected to the dashboard
 function buildExpected(tc: TestCase): string {
   if (!tc.steps || tc.steps.length === 0) return "No expected results defined.";
   return tc.steps
@@ -54,8 +41,7 @@ function formatForTestmo(tc: TestCase) {
     name: String(tc.title),
     repository_id: REPOSITORY_ID,
     group_id: GROUP_ID,
-    // custom_ prefix required by Testmo API. These are TOP-LEVEL keys, not nested.
-    // System names must match exactly what is set in Testmo Admin > Fields.
+
     custom_priority: PRIORITY_MAP[tc.priority] ?? 2,
     custom_description: buildDescription(tc),   // fills the Description field
     custom_expected: buildExpected(tc),         // fills the Expected field
@@ -120,7 +106,6 @@ export async function pushManualCases(testCases: TestCase[]): Promise<void> {
   console.log(`✅ Pushed ${manual.length} manual test case(s) to Testmo successfully`);
 }
 
-// ── CLI guard ─────────────────────────────────────────────────────────────────
 const isMain = process.argv[1] &&
   fileURLToPath(import.meta.url) === path.resolve(process.argv[1]);
 
